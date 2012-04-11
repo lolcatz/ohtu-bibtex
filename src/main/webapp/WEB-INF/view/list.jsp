@@ -15,7 +15,7 @@
       
       
       <c:forEach var="reference" items="${referencet}">
-       @${reference.type}{{reference.key},</br>
+       @${reference.type}{${reference.key},</br>
        author = {${reference.author}},</br>
        title = {${reference.title}},</br>
        journal = {${reference.journal}},</br>
