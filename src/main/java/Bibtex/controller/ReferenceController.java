@@ -23,7 +23,7 @@ public class ReferenceController {
     
     @RequestMapping(value= "*")
     public String listener(){
-        return "add";
+        return "/add";
     }
     
     @RequestMapping(value="lisaaReference")
@@ -36,5 +36,10 @@ public class ReferenceController {
     public String listaaListener(Model model){
         model.addAttribute("referencet", referenceService.listAll());
         return "list";
+    }
+    
+    @RequestMapping(value="/add")
+    public String addListener(){
+        return "add";
     }
 }
