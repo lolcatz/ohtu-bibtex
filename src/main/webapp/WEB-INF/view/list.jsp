@@ -15,6 +15,7 @@
       
       
       <c:forEach var="reference" items="${referencet}">
+       @${reference.type}{{reference.key},</br>
        author = {${reference.author}},</br>
        title = {${reference.title}},</br>
        journal = {${reference.journal}},</br>
@@ -23,6 +24,7 @@
        pages = {${reference.pages}},</br>
        publisher = {${reference.publisher}},</br>
        address = {${reference.address}}</br>
+       }</br>
       </c:forEach>
     
           <a href="add">Lisää uusi viite</a>
