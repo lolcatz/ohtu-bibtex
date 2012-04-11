@@ -15,13 +15,13 @@
       
       
       <c:forEach var="reference" items="${referencet}">
-       author = {${reference.author}}</br>
-       title = {${reference.title}}</br>
-       journal = {${reference.journal}}</br>
-       year = {${reference.year}}</br>
-       volume = {${reference.volume}}</br>
-       pages = {${reference.pages}}</br>
-       publisher = {${reference.publisher}}</br>
+       author = {${reference.author}},</br>
+       title = {${reference.title}},</br>
+       journal = {${reference.journal}},</br>
+       year = {${reference.year}},</br>
+       volume = {${reference.volume}},</br>
+       pages = {${reference.pages}},</br>
+       publisher = {${reference.publisher}},</br>
        address = {${reference.address}}</br>
       </c:forEach>
     
