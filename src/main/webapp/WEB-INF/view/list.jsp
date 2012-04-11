@@ -12,11 +12,17 @@
         <title>JSP Page</title>
     </head>
     <body>
-         
+      
       
       <c:forEach var="reference" items="${referencet}">
-          <li>Address: ${reference.address}</li>
-          <li>Author: ${reference.author}</li>
+       author = {${reference.author}}</br>
+       title = {${reference.title}}</br>
+       journal = {${reference.journal}}</br>
+       year = {${reference.year}}</br>
+       volume = {${reference.volume}}</br>
+       pages = {${reference.pages}}</br>
+       publisher = {${reference.publisher}}</br>
+       address = {${reference.address}}</br>
       </c:forEach>
     
           <a href="add">Lisää uusi viite</a>
