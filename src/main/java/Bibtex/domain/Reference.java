@@ -30,14 +30,13 @@ public class Reference implements Serializable {
     public String getType() { return type; }
     public HashMap<String,String> getFields() { return fields; }
     
-    public void setKey(String key) { 
-            
+    public void setKey(String key) {  
         this.key = key; 
     }
     public void setType(String type) throws Exception {
         if (!isValidType(type))
             throw new Exception("Error: bad type name, "+type);
-        this.type = type; 
+        this.type = type;
     }
     public void setFields(HashMap<String,String> fields) throws Exception {
         for (String field : fields.keySet())
@@ -80,9 +79,11 @@ public class Reference implements Serializable {
         if (fields != null) {
             String[] lines = fields.split("\n");
             for (String s : lines) {
-                String key = s.split("=")[0].trim();
-                String value = s.split("=")[1].trim();
-                parsed.put(key, value);
+                if (!s.trim().equals("")) {
+                    String key = s.split("=")[0].trim();
+                    String value = s.split("=")[1].trim();
+                    parsed.put(key, value);
+                }
             }
         }
         return parsed;

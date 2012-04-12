@@ -17,7 +17,7 @@
             if (e != null)
                 out.println("<FONT COLOR=\"#FF0000\">"+e+"</FONT>");
         %>
-        <form action="lisaaReference" method="POST" commandName="registerForm">
+        <form action="lisaaReference" method="POST">
             <span>Type: <input type="text" name="type" value=<%
                     String t = request.getParameter("type_");
                     if (e != null) out.println("\""+t+"\""); else out.println("\"\"");

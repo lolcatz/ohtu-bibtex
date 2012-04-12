@@ -61,6 +61,35 @@ public class ReferenceController {
         return "redirect:/listaa";
     }
     
+    @RequestMapping(value="editReference")
+    public String editListener(
+            @RequestParam(value = "key", required = true) final String key,
+            Model model)
+    {
+        List<Reference> references = referenceService.listAll();
+        Reference toEdit = null;
+        for (Reference r : references)
+            if (r.getKey().equals(key)) {
+                toEdit = r;
+                continue;
+            }
+        if (toEdit != null) {  
+            referenceService.remove(toEdit);
+            String fields = "";
+            for (String field : toEdit.getFields().keySet())
+                fields += field + " = " + toEdit.getFields().get(field) +"\n";
+            
+            model.addAttribute("type_", toEdit.getType());
+            model.addAttribute("key_", key);
+            model.addAttribute("fields_", fields);
+            model.addAttribute("error", "Editing, reference will disappear if not resubmitted");
+            referenceService.remove(toEdit);
+            return "redirect:/add";
+        } else {
+            model.addAttribute("error", "Error: count not find reference with key, "+key);
+            return "redirect:/main";
+        }
+    }
     @RequestMapping(value="listaa")
     public String listaaListener(Model model){
         List<Reference> references = referenceService.listAll();
