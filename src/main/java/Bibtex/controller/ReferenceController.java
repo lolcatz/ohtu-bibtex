@@ -32,6 +32,8 @@ public class ReferenceController {
     
     @RequestMapping(value="lisaaReference")
     public String referenceListener(@ModelAttribute UserInputAdd userInput){
+        System.err.println(userInput.getKey()+" "+userInput.getType());
+        
         Reference r = new Reference();
         r.setKey(userInput.getKey());
         r.setType(userInput.getType());
@@ -44,12 +46,12 @@ public class ReferenceController {
     public String listaaListener(Model model){
         List<Reference> references = referenceService.listAll();
         
-        System.out.println(references.size());
+        System.err.println("references: "+references.size());
         for (Reference r : references) {
-            System.out.println(r.getType());
-            System.out.println(r.getKey());
+            System.err.println(r.getType());
+            System.err.println(r.getKey());
             for (Entry<String,String> e: r.getFields().entrySet()) {
-                System.out.println(e.getKey()+" = "+e.getValue());
+                System.err.println(e.getKey()+" = "+e.getValue());
             }
         }
         

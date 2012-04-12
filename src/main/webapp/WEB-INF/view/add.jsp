@@ -12,7 +12,7 @@
         <title>Lisää viite</title>
     </head>
     <body>
-        <form action="lisaaReference" method="POST">
+        <form action="lisaaReference" method="POST" commandName="registerForm">
             <span>Type: <input type="text" name="type" ></span><br>
             <span>Key: <input type="text" name="key" ></span><br>
             <span>Fields: <textarea name="fields" cols="40" rows="5">Text goes here</textarea></span><br>
