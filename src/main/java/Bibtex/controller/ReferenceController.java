@@ -5,6 +5,10 @@
 package Bibtex.controller;
 
 import Bibtex.domain.Reference;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map.Entry;
+import Bibtex.domain.UserInputAdd;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import Bibtex.service.ReferenceService;
@@ -23,18 +27,33 @@ public class ReferenceController {
     
     @RequestMapping(value= "*")
     public String listener(){
-        return "/add";
+        return "/main";
     }
     
     @RequestMapping(value="lisaaReference")
-    public String referenceListener(@ModelAttribute Reference reference){
-        reference = referenceService.add(reference);
+    public String referenceListener(@ModelAttribute UserInputAdd userInput){
+        Reference r = new Reference();
+        r.setKey(userInput.getKey());
+        r.setType(userInput.getType());
+        r.setFields(Reference.extractFields(userInput.getFields()));
+        referenceService.add(r);
         return "redirect:/listaa";
     }
     
     @RequestMapping(value="listaa")
     public String listaaListener(Model model){
-        model.addAttribute("referencet", referenceService.listAll());
+        List<Reference> references = referenceService.listAll();
+        
+        System.out.println(references.size());
+        for (Reference r : references) {
+            System.out.println(r.getType());
+            System.out.println(r.getKey());
+            for (Entry<String,String> e: r.getFields().entrySet()) {
+                System.out.println(e.getKey()+" = "+e.getValue());
+            }
+        }
+        
+        model.addAttribute("referencet", references);
         return "list";
     }
     

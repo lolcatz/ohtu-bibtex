@@ -15,15 +15,11 @@
       
       
       <c:forEach var="reference" items="${referencet}">
+      
        @${reference.type}{${reference.key},</br>
-       author = {${reference.author}},</br>
-       title = {${reference.title}},</br>
-       journal = {${reference.journal}},</br>
-       year = {${reference.year}},</br>
-       volume = {${reference.volume}},</br>
-       pages = {${reference.pages}},</br>
-       publisher = {${reference.publisher}},</br>
-       address = {${reference.address}}</br>
+       <c:forEach var="fields" items="${reference.fields}">
+           ${field.key} = ${field.value},
+       </c:forEach>
        }</br>
       </c:forEach>
     
