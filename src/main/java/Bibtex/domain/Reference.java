@@ -78,7 +78,7 @@ public class Reference implements Serializable {
     public static HashMap<String,String> extractFields(String fields) throws Exception{
         HashMap<String,String> parsed = new HashMap<String,String>();
         if (fields != null) {
-            String[] lines = fields.split(",");
+            String[] lines = fields.split("\n");
             for (String s : lines) {
                 String key = s.split("=")[0].trim();
                 String value = s.split("=")[1].trim();

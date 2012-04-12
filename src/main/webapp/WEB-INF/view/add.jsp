@@ -37,11 +37,9 @@
         </form>
         
         Format: </br>
-        key = value, </br>
-        key2 = value2, </br>
-        key3 = value3 </br>
-        
-        Protip! </br>
-        key4 = value4, key5 = value5 works aswell! </br>
+        field1 = value1 </br>
+        field2 = value2 </br>
+        field3 = value3 </br>
+        ... </br>
     </body>
 </html>
