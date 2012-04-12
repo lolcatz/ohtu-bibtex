@@ -1,9 +1,11 @@
 package Bibtex.domain;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  *
@@ -32,14 +34,35 @@ public class Reference implements Serializable {
     public void setType(String type) { this.type = type; }
     public void setFields(HashMap<String,String> fields) { this.fields = fields; }
     
-    public static HashMap<String,String> extractFields(String fields) {
+    private static final List<String> validTypes = Arrays.asList("article","book","booklet","conference","inbook",
+    "incollection","inproceedings","manual","mastersthesis","misc","phdthesis",
+    "proceedings","techreport","unpublished");
+    
+    private static final List<String> validFields = Arrays.asList("address","annote","author","booktitle","chapter","crossref",
+    "edition", "editor", "howpublished", "institution", "journal", "key", "month","note",
+    "number", "organization", "pages", "publisher", "school", "series", "title", "type",
+    "volume", "year", "affiliation","abstract", "contents", "copyright", "ISBN", "ISSN", "keywords",
+    "language", "location", "LCCN", "mrnumber", "URL");
+    
+    public static boolean isValidType(String s) {
+        return validTypes.contains(s.toLowerCase());
+    }
+    
+    public static boolean isValidField(String s) {
+        return validFields.contains(s.toLowerCase());
+    }
+    
+    public static HashMap<String,String> extractFields(String fields) throws Exception{
         HashMap<String,String> parsed = new HashMap<String,String>();
         if (fields != null) {
             String[] lines = fields.split(",");
             for (String s : lines) {
-                String key = s.split("=")[0];
-                String value = s.split("=")[1];
-                parsed.put(key.trim(), value.trim());
+                String key = s.split("=")[0].trim();
+                String value = s.split("=")[1].trim();
+                if (!isValidField(key)) {
+                    throw new Exception("Error: bad field name, "+key);
+                }
+                parsed.put(key, value);
             }
         }
         return parsed;

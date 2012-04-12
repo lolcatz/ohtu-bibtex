@@ -34,14 +34,33 @@ public class ReferenceController {
     public String referenceListener(
             @RequestParam(value = "type", required = true) final String type,
             @RequestParam(value = "key", required = true) final String key,
-            @RequestParam(value = "fields", required = true) final String fields)
+            @RequestParam(value = "fields", required = true) final String fields,
+            Model model)
                                             {
         System.err.println(type+" "+key+" "+fields);
         
         Reference r = new Reference();
         r.setKey(key);
-        r.setType(type);
-        r.setFields(Reference.extractFields(fields));
+        if (Reference.isValidType(key.toLowerCase())) {
+            r.setType(type);
+        } else {
+            model.addAttribute("error", "Error: nonstandard bibtex type, "+type);
+            model.addAttribute("type_", type);
+            model.addAttribute("key_", key);
+            model.addAttribute("fields_", fields);
+            return "redirect:/add";
+        }
+        
+        try {
+            r.setFields(Reference.extractFields(fields));
+        } catch (Exception e) {
+            model.addAttribute("error", e.getMessage());
+            model.addAttribute("type_", type);
+            model.addAttribute("key_", key);
+            model.addAttribute("fields_", fields);
+            return "redirect:/add";
+        }
+        
         referenceService.add(r);
         return "redirect:/listaa";
     }
