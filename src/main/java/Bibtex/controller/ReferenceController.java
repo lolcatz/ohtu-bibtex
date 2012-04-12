@@ -15,6 +15,7 @@ import Bibtex.service.ReferenceService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 /**
  *
  * @author noemj
@@ -31,13 +32,17 @@ public class ReferenceController {
     }
     
     @RequestMapping(value="lisaaReference")
-    public String referenceListener(@ModelAttribute UserInputAdd userInput){
-        System.err.println(userInput.getKey()+" "+userInput.getType());
+    public String referenceListener(
+            @RequestParam(value = "type", required = true) final String type,
+            @RequestParam(value = "key", required = true) final String key,
+            @RequestParam(value = "fields", required = true) final String fields)
+                                            {
+        System.err.println(type+" "+key+" "+fields);
         
         Reference r = new Reference();
-        r.setKey(userInput.getKey());
-        r.setType(userInput.getType());
-        r.setFields(Reference.extractFields(userInput.getFields()));
+        r.setKey(key);
+        r.setType(type);
+        r.setFields(Reference.extractFields(fields));
         referenceService.add(r);
         return "redirect:/listaa";
     }

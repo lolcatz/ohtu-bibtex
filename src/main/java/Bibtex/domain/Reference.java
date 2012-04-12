@@ -38,7 +38,7 @@ public class Reference implements Serializable {
             String[] lines = fields.split(",");
             for (String s : lines) {
                 String key = s.split("=")[0];
-                String value = s.substring(key.length() -1);
+                String value = s.split("=")[1];
                 parsed.put(key.trim(), value.trim());
             }
         }
