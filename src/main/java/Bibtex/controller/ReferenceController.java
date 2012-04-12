@@ -37,21 +37,12 @@ public class ReferenceController {
             @RequestParam(value = "fields", required = true) final String fields,
             Model model)
                                             {
-        System.err.println(type+" "+key+" "+fields);
+        System.out.println(type+" "+key+" "+fields);
         
         Reference r = new Reference();
         r.setKey(key);
-        if (Reference.isValidType(key.toLowerCase())) {
-            r.setType(type);
-        } else {
-            model.addAttribute("error", "Error: nonstandard bibtex type, "+type);
-            model.addAttribute("type_", type);
-            model.addAttribute("key_", key);
-            model.addAttribute("fields_", fields);
-            return "redirect:/add";
-        }
-        
         try {
+            r.setType(type);
             r.setFields(Reference.extractFields(fields));
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());

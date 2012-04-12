@@ -12,11 +12,27 @@
         <title>Lisää viite</title>
     </head>
     <body>
-        <FONT COLOR="#FF0000">${error}</FONT>
+        <%
+            String e = request.getParameter("error");
+            if (e != null)
+                out.println("<FONT COLOR=\"#FF0000\">"+e+"</FONT>");
+        %>
         <form action="lisaaReference" method="POST" commandName="registerForm">
-            <span>Type: <input type="text" name="type" value="${type_}"></span><br>
-            <span>Key: <input type="text" name="key" value="${key_}"></span><br>
-            <span>Fields: <textarea name="fields" cols="40" rows="5">${fields_}</textarea></span><br>
+            <span>Type: <input type="text" name="type" value=<%
+                    String t = request.getParameter("type_");
+                    if (e != null) out.println("\""+t+"\""); else out.println("\"\"");
+                %>>
+            </span><br>
+            <span>Key: <input type="text" name="key" value=<%
+                    String k = request.getParameter("key_");
+                    if (e != null) out.println("\""+k+"\""); else out.println("\"\"");
+                %>>
+            </span><br>
+            <span>Fields: <textarea name="fields" cols="40" rows="5"><%
+                                String f = request.getParameter("fields_");
+                                if (e != null) out.println(f);
+                %></textarea>
+            </span><br>
             <input type="submit">
         </form>
         
