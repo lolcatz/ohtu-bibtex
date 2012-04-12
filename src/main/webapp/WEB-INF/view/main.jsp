@@ -12,7 +12,7 @@
         <title>Lolcatz's Ohtu Bibtex</title>
     </head>
     <body>
-        <a href="ohtu-bibtex/add">Lisää uusi viite</a> </br>
-        <a href="ohtu-bibtex/listaa">Listaa kaikki</a>
+        <a href="add">Lisää uusi viite</a> </br>
+        <a href="listaa">Listaa kaikki</a>
     </body>
 </html>

@@ -27,7 +27,12 @@ public class ReferenceController {
     
     @RequestMapping(value= "*")
     public String listener(){
-        return "/main";
+        return "redirect:/main";
+    }
+    
+    @RequestMapping(value="main")
+    public String mainListener() {
+        return "main";
     }
     
     @RequestMapping(value="lisaaReference")

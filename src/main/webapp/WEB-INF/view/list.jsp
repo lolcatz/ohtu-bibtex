@@ -23,7 +23,7 @@
        }</br>
       </c:forEach>
     
-          <a href="add">Lisää uusi viite</a>
+          <a href="main">Back to main page</a>
           
     </body>
 </html>
