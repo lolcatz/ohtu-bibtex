@@ -45,6 +45,16 @@ public class Reference implements Serializable {
         this.fields = fields; 
     }
     
+    public static final HashMap<String,List<String>> fieldsForTypes = new HashMap<String,List<String>>() {{
+        put("article", Arrays.asList("author", "title", "journal", "year", "volume",
+                "number", "pages", "month", "note", "key"));
+        put("book", Arrays.asList("author", "editor", "title", "publisher", "year",
+                "volume", "number", "series", "address", "edition", "month", "note", "key"));
+        put("inproceedings", Arrays.asList("author", "title", "booktitle", "year",
+                "editor", "volume", "number", "series", "pages", "address", "month",
+                "organization", "publisher", "note", "key"));
+    }};
+    
     public static final List<String> validTypes = Arrays.asList("article","book","booklet","conference","inbook",
     "incollection","inproceedings","manual","mastersthesis","misc","phdthesis",
     "proceedings","techreport","unpublished");
@@ -54,6 +64,9 @@ public class Reference implements Serializable {
     "number", "organization", "pages", "publisher", "school", "series", "title", "type",
     "volume", "year", "affiliation", "abstract", "contents", "copyright", "ISBN", "ISSN", "keywords",
     "language", "location", "LCCN", "mrnumber", "URL"});
+    
+    //public static final HashMap<String,String> 
+    
     
     public static boolean isValidType(String s) {
         String s_ = s.trim().toLowerCase();

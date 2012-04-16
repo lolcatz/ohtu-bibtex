@@ -83,8 +83,10 @@ public class ReferenceController {
             model.addAttribute("key_", key);
             model.addAttribute("fields_", fields);
             model.addAttribute("error", "Editing, reference will disappear if not resubmitted");
+            model.addAttribute("types", Reference.fieldsForTypes.keySet());
             referenceService.remove(toEdit);
-            return "redirect:/add";
+            
+            return "add";
         } else {
             model.addAttribute("error", "Error: count not find reference with key, "+key);
             return "redirect:/main";
@@ -108,7 +110,8 @@ public class ReferenceController {
     }
     
     @RequestMapping(value="/add")
-    public String addListener(){
+    public String addListener(Model model){
+        model.addAttribute("types", Reference.fieldsForTypes.keySet());
         return "add";
     }
 }
