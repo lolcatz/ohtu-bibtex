@@ -56,11 +56,12 @@ public class ReferenceController {
             model.addAttribute("type_", type);
             model.addAttribute("key_", key);
             model.addAttribute("fields_", fields);
-            return "redirect:/add";
+            model.addAttribute("types", Reference.fieldsForTypes.keySet());
+            return "add";
         }
         
         referenceService.add(r);
-        return "redirect:/listaa";
+        return "redirect:/list";
     }
     
     @RequestMapping(value="edit/{id}")
@@ -78,7 +79,7 @@ public class ReferenceController {
         model.addAttribute("error", "Editing, reference will disappear if not resubmitted");
         model.addAttribute("types", Reference.fieldsForTypes.keySet());
         referenceService.remove(r);
-
+        
         return "add";
     }
     
