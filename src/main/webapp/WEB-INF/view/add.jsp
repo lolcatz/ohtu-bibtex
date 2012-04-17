@@ -15,7 +15,7 @@
         <c:if test="${error}"> <font color="#FF0000">${error}</font></c:if>
         <form action="lisaaReference" method="POST">
             <span>Type: 
-                <select name="type">
+                <select name="type" >
                     <c:forEach var="type" items="${types}">
                         <c:if test="${type != type_}">
                             <option value=${type}>${type}</option>

@@ -19,12 +19,7 @@
         %>
         <a href="add">Add new reference</a> </br>
         <a href="listaa">List all references</a> </br></br>
-        
-        <form action="editReference" method="POST">
-            Edit a reference: </br>
-            <span>Key = <input type="text" name="key"></span>
-            <input type="submit">
-        </form>
+        <a href="bibtex">Download as bibtex</a> </br></br>
         
     </body>
 </html>

@@ -17,8 +17,7 @@ public class Reference implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
     @Column(name = "ID")
-    private Long id;
-    
+    private Long id;  
     @Column(name = "Type")
     private String type;
     @Column(name = "Key")
@@ -28,6 +27,7 @@ public class Reference implements Serializable {
       
     public String getKey() { return key; }
     public String getType() { return type; }
+    public Long getId() { return id; }
     public HashMap<String,String> getFields() { return fields; }
     
     public void setKey(String key) {  
@@ -44,6 +44,7 @@ public class Reference implements Serializable {
                 throw new Exception("Error: bad field name, "+field);
         this.fields = fields; 
     }
+    
     
     public static final HashMap<String,List<String>> fieldsForTypes = new HashMap<String,List<String>>() {{
         put("article", Arrays.asList("author", "title", "journal", "year", "volume",

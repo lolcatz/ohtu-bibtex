@@ -35,4 +35,9 @@ public class ReferenceServiceImpl implements ReferenceService {
         return(referenceRepository.save(reference));
     }
     
+    @Override 
+    public Reference findByID(Long id) {
+        return referenceRepository.findOne(id);
+    }
+    
 }
