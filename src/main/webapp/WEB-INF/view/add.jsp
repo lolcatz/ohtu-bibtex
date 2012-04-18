@@ -32,6 +32,8 @@
             </span><br>
             <input type="submit">
         </form>
+            
+            <a href="help">wat do? HLEP!</a></br>
 
         Format: </br>
         field1 = value1 </br>
