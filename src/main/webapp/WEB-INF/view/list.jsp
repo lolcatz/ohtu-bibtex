@@ -18,11 +18,11 @@
       
        ${reference.type} ${reference.key} <a href="edit/${reference.id}">[edit]</a></br>
        <c:forEach var="field" items="${reference.fields}">
-           ${field.key} = {${field.value}},</br>
+           ${field.key} = ${field.value}</br>
        </c:forEach>
        </br>
       </c:forEach>
-
+    
       <a href="main">Back to main page</a>
           
     </body>
