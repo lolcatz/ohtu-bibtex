@@ -19,6 +19,7 @@
        @${reference.type}{${reference.key},</br>
        <c:forEach var="field" items="${reference.fields}">
            ${field.key} = {${field.value}},</br>
+           
        </c:forEach>
        }</br>
       </c:forEach>
