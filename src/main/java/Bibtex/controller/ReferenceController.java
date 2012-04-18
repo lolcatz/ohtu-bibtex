@@ -5,16 +5,18 @@
 package Bibtex.controller;
 
 import Bibtex.domain.Reference;
-import java.util.HashMap;
+import Bibtex.service.ReferenceService;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map.Entry;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import Bibtex.service.ReferenceService;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 /**
  *
  * @author noemj
@@ -54,61 +56,65 @@ public class ReferenceController {
             model.addAttribute("type_", type);
             model.addAttribute("key_", key);
             model.addAttribute("fields_", fields);
-            return "redirect:/add";
+            model.addAttribute("types", Reference.fieldsForTypes.keySet());
+            return "add";
         }
         
         referenceService.add(r);
-        return "redirect:/listaa";
+        return "redirect:/list";
     }
     
-    @RequestMapping(value="editReference")
-    public String editListener(
-            @RequestParam(value = "key", required = true) final String key,
-            Model model)
+    @RequestMapping(value="edit/{id}")
+    public String editListener(@PathVariable("id") Long id, Model model)
     {
-        List<Reference> references = referenceService.listAll();
-        Reference toEdit = null;
-        for (Reference r : references)
-            if (r.getKey().equals(key)) {
-                toEdit = r;
-                continue;
-            }
-        if (toEdit != null) {  
-            referenceService.remove(toEdit);
-            String fields = "";
-            for (String field : toEdit.getFields().keySet())
-                fields += field + " = " + toEdit.getFields().get(field) +"\n";
-            
-            model.addAttribute("type_", toEdit.getType());
-            model.addAttribute("key_", key);
-            model.addAttribute("fields_", fields);
-            model.addAttribute("error", "Editing, reference will disappear if not resubmitted");
-            referenceService.remove(toEdit);
-            return "redirect:/add";
-        } else {
-            model.addAttribute("error", "Error: count not find reference with key, "+key);
-            return "redirect:/main";
-        }
+        Reference r = referenceService.findByID(id);
+
+        String fields = "";
+        for (String field : r.getFields().keySet())
+            fields += field + " = " + r.getFields().get(field) +"\n";
+
+        model.addAttribute("type_", r.getType());
+        model.addAttribute("key_", r.getKey());
+        model.addAttribute("fields_", fields);
+        model.addAttribute("error", "Editing, reference will disappear if not resubmitted");
+        model.addAttribute("types", Reference.fieldsForTypes.keySet());
+        referenceService.remove(r);
+        
+        return "add";
     }
+    
     @RequestMapping(value="listaa")
     public String listaaListener(Model model){
         List<Reference> references = referenceService.listAll();
-        
-        System.err.println("references: "+references.size());
-        for (Reference r : references) {
-            System.err.println(r.getType());
-            System.err.println(r.getKey());
-            for (Entry<String,String> e: r.getFields().entrySet()) {
-                System.err.println(e.getKey()+" = "+e.getValue());
-            }
-        }
-        
         model.addAttribute("referencet", references);
         return "list";
     }
     
     @RequestMapping(value="/add")
-    public String addListener(){
+    public String addListener(Model model){
+        model.addAttribute("types", Reference.fieldsForTypes.keySet());
         return "add";
+    }
+    
+    @RequestMapping(value="/bibtex")
+    public void getFile(HttpServletResponse response) {
+        response.setContentType("application/octet-stream");
+        response.setHeader("Content-Disposition","attachment;filename=references.bib"); 
+        try 
+	{
+            ServletOutputStream out = response.getOutputStream();
+            writeBibtexToStream(out);
+            out.flush();
+            out.close();
+        } catch (Throwable t) {}
+    }
+     
+    private void writeBibtexToStream(ServletOutputStream out) throws IOException{
+	for (Reference ref : referenceService.listAll()) {
+            out.println("@"+ref.getType()+"{"+ref.getKey()+",");
+            for (String k : ref.getFields().keySet())
+                out.println(k+" = {"+ref.getFields().get(k)+"},");
+            out.println("}");
+        }        
     }
 }

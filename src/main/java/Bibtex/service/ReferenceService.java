@@ -16,4 +16,5 @@ public interface ReferenceService {
     public void remove(Reference reference);
     public List<Reference> listAll();
     public Reference add(Reference reference);
+    public Reference findByID(Long id);
 }

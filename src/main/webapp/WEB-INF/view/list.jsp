@@ -16,15 +16,14 @@
       
       <c:forEach var="reference" items="${referencet}">
       
-       @${reference.type}{${reference.key},</br>
+       ${reference.type} ${reference.key} <a href="edit/${reference.id}">[edit]</a></br>
        <c:forEach var="field" items="${reference.fields}">
            ${field.key} = {${field.value}},</br>
-           
        </c:forEach>
-       }</br>
+       </br>
       </c:forEach>
-    
-          <a href="main">Back to main page</a>
+
+      <a href="main">Back to main page</a>
           
     </body>
 </html>

@@ -12,6 +12,4 @@ import org.springframework.stereotype.Repository;
  * @author noemj
  */
 @Repository
-public interface ReferenceRepository extends JpaRepository<Reference, Long> {
-    
-}
+public interface ReferenceRepository extends JpaRepository<Reference, Long> { }
