@@ -61,7 +61,12 @@ public class ReferenceController {
         }
 
         referenceService.add(r);
-        return "redirect:/list";
+        return "redirect:/listaa";
+    }
+    
+    @RequestMapping(value = "list")
+    public String listListener(){
+        return "list";
     }
 
     @RequestMapping(value = "edit/{id}")
