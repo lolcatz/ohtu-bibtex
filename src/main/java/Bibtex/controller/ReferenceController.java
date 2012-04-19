@@ -129,8 +129,8 @@ public class ReferenceController {
                     retu += checkList[i][1];
                     continue outerloop;
                 }
-            retu += s.charAt(k);
             }
+            retu += s.charAt(k);
         }
         return retu;
     }
