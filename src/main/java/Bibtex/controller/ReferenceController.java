@@ -114,11 +114,29 @@ public class ReferenceController {
         }
     }
 
+    private String[][] checkList = {{"ä", "\\\"a"}};
+
+    private String c(String s)
+    {
+        String retu = "";
+        outerloop:
+        for (int k = 0; k < s.length(); k++){
+            for (int i = 0; i< checkList.length; i++) {
+                if (s.substring(k,k+1).equals(checkList[i][0])) {
+                    retu += checkList[i][1];
+                    continue outerloop;
+                }
+            retu += s.charAt(k);
+            }
+        }
+        return retu;
+    }
+
     private void writeBibtexToStream(ServletOutputStream out) throws IOException {
         for (Reference ref : referenceService.listAll()) {
-            out.println("@" + ref.getType() + "{" + ref.getKey() + ",");
+            out.println("@" + c(ref.getType()) + "{" + c(ref.getKey()) + ",");
             for (String k : ref.getFields().keySet()) {
-                out.println(k + " = {" + ref.getFields().get(k) + "},");
+                out.println(c(k) + " = {" + c(ref.getFields().get(k)) + "},");
             }
             out.println("}");
         }
