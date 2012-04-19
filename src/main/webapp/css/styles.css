@@ -1,17 +1,14 @@
 body
 {
     
-    background-image:url(http://khirviko.users.cs.helsinki.fi/luke-javawalker/thumb_up.png);
+    background-image:url(http://desktopwallpaperdownload.files.wordpress.com/2012/01/gaming-wallpaper-full-hd-starcraft-epic-face-blue-eye.jpg);
     font-family: fantasy;
     font-size: 40px;
     font-style: normal;
     font-weight: bold;
-    vertical-align: bottom;
+    vertical-align: middle;
     text-align: center;
-    background-position: left bottom;
-    color: black;
-    background-repeat: no-repeat;
-    background-attachment: none;
+    background-position: inherit inherit;
 }
 h1
 {
@@ -23,14 +20,15 @@ h1
     font-variant: normal;
     font-family: fantasy;
     font-size: 60px;
-    background-position: bottom bottom;
-    vertical-align: bottom;
-    background-repeat: repeat;
 }
 p
 {
-    font-family:"Times New Roman";
-    font-size:36px;
+    font-family:fantasy;
+    font-size:44px;
+    color: black;
+}
+body{
     
     color: black;
+    font-size: X-large;
 }
