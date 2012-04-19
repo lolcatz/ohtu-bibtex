@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author Noemj
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring-context-test.xml"})
+@ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring-context.xml"})
 public class ReferenceServiceTest {
 
     @Autowired
