@@ -7,6 +7,7 @@ package Bibtex.controller;
 import Bibtex.domain.Reference;
 import Bibtex.service.ReferenceService;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.List;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
@@ -106,20 +107,20 @@ public class ReferenceController {
         response.setHeader("Content-Disposition", "attachment;filename=references.bib");
         try {
             ServletOutputStream out = response.getOutputStream();
-            writeBibtexToStream(out);
+            writeBibtexToStream(out, referenceService.listAll());
             out.flush();
             out.close();
         } catch (Throwable t) {
         }
     }
 
-    private String[][] checkList = {{"ä", "\\\"a"}, {"ö", "\\\"o"}, {"Ä", "\\\"A"}, {"Ö", "\\\"O"},
+    private static String[][] checkList = {{"ä", "\\\"a"}, {"ö", "\\\"o"}, {"Ä", "\\\"A"}, {"Ö", "\\\"O"},
                                       {"å", "{\\aa}"}, {"Å", "{\\AA}"}, {"ü", "\\\"u"}, {"Ü", "\\\"U"},
                                       {"ß", "{\\ss}"}, {"ø", "{\\o}"}, {"Ø", "{\\O}"}, {"æ", "{\\ae}"},
                                       {"Æ", "{\\AE}"}, {"Š", "{\\v S}"}, {"š", "{\\v s}"}, {"Č", "{\\v C}"},
                                       {"ž", "{\\v z}"}, {"Ř", "{\\v R}"}, {"ĕ", "{\\v e}"}, {"Λ", "\\Lambda"},};
 
-    private String convertToBibtexFormat(String s)
+    private static String convertToBibtexFormat(String s)
     {
         String retu = "";
         outerloop:
@@ -135,13 +136,16 @@ public class ReferenceController {
         return retu;
     }
 
-    private void writeBibtexToStream(ServletOutputStream out) throws IOException {
-        for (Reference ref : referenceService.listAll()) {
-            out.println("@" + convertToBibtexFormat(ref.getType()) + "{" + convertToBibtexFormat(ref.getKey()) + ",");
+    public static void writeBibtexToStream(OutputStream out, List<Reference> references) throws IOException {
+        
+        for (Reference ref : references) {
+            out.write(("@" + ref.getType()
+                    + "{" + convertToBibtexFormat(ref.getKey()) + ",\n").getBytes());
             for (String k : ref.getFields().keySet()) {
-                out.println(convertToBibtexFormat(k) + " = {" + convertToBibtexFormat(ref.getFields().get(k)) + "},");
+                out.write((k + " = {" 
+                        + convertToBibtexFormat(ref.getFields().get(k)) + "},\n").getBytes());
             }
-            out.println("}");
+            out.write("}\n".getBytes());
         }
     }
 }
