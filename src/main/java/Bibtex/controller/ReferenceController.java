@@ -8,7 +8,6 @@ import Bibtex.domain.Reference;
 import Bibtex.service.ReferenceService;
 import java.io.IOException;
 import java.util.List;
-import java.util.Map.Entry;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,9 +113,13 @@ public class ReferenceController {
         }
     }
 
-    private String[][] checkList = {{"ä", "\\\"a"}};
+    private String[][] checkList = {{"ä", "\\\"a"}, {"ö", "\\\"o"}, {"Ä", "\\\"A"}, {"Ö", "\\\"O"},
+                                      {"å", "{\\aa}"}, {"Å", "{\\AA}"}, {"ü", "\\\"u"}, {"Ü", "\\\"U"},
+                                      {"ß", "{\\ss}"}, {"ø", "{\\o}"}, {"Ø", "{\\O}"}, {"æ", "{\\ae}"},
+                                      {"Æ", "{\\AE}"}, {"Š", "{\\v S}"}, {"š", "{\\v s}"}, {"Č", "{\\v C}"},
+                                      {"ž", "{\\v z}"}, {"Ř", "{\\v R}"}, {"ĕ", "{\\v e}"}, {"Λ", "\\Lambda"},};
 
-    private String c(String s)
+    private String convertToBibtexFormat(String s)
     {
         String retu = "";
         outerloop:
@@ -134,9 +137,9 @@ public class ReferenceController {
 
     private void writeBibtexToStream(ServletOutputStream out) throws IOException {
         for (Reference ref : referenceService.listAll()) {
-            out.println("@" + c(ref.getType()) + "{" + c(ref.getKey()) + ",");
+            out.println("@" + convertToBibtexFormat(ref.getType()) + "{" + convertToBibtexFormat(ref.getKey()) + ",");
             for (String k : ref.getFields().keySet()) {
-                out.println(c(k) + " = {" + c(ref.getFields().get(k)) + "},");
+                out.println(convertToBibtexFormat(k) + " = {" + convertToBibtexFormat(ref.getFields().get(k)) + "},");
             }
             out.println("}");
         }
