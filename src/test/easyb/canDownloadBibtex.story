@@ -8,7 +8,7 @@ description 'User can download the bibtex'
 scenario "User can see a download link", {
     given 'main page loaded', {
         driver = new HtmlUnitDriver();
-        driver.get("http://localhost:8080/main");      
+        driver.get("http://localhost:9001/main");
     }
 
     when '?????', {
