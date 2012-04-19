@@ -57,6 +57,14 @@ public class ReferenceServiceTest {
     }
     
     @Test
+    public void FindByIdTest(){
+        Reference ref = referenceRepository.findOne(1L);
+        assertEquals(ref.getType(), ref1.getType());
+        assertEquals(ref.getKey(), ref1.getKey());
+        assertEquals(ref.getFields(), ref1.getFields());
+    }
+    
+    @Test
     public void removeReferenceTest(){
         referenceService.remove(ref1);
         assertEquals(0, referenceRepository.count());
