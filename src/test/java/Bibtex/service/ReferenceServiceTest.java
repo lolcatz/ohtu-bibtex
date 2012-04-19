@@ -55,4 +55,10 @@ public class ReferenceServiceTest {
             assertEquals(reference.getKey(), ref1.getKey());
         }
     }
+    
+    @Test
+    public void removeReferenceTest(){
+        referenceService.remove(ref1);
+        assertEquals(0, referenceRepository.count());
+    }
 }
