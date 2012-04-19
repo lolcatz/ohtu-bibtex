@@ -28,7 +28,7 @@ public class ReferenceController {
     @Autowired
     private ReferenceService referenceService;
 
-    @RequestMapping(value = "*")
+    @RequestMapping(value = "/")
     public String listener() {
         return "redirect:/main";
     }
