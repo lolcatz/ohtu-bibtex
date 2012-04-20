@@ -10,7 +10,7 @@ description 'List page Tests'
 scenario "List page contains link to main page", {
     given 'main page loaded', {
         driver = new HtmlUnitDriver();
-        driver.get("http://localhost:9001/main");      
+        driver.get("http://localhost:9001/listaa");
     }
 
     when 'always', {

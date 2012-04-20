@@ -28,7 +28,7 @@ scenario "User can see link to references list", {
         driver.get("http://localhost:9001/main");
     }
 
-    when 'always' {
+    when 'always', {
 
     }
  
@@ -42,7 +42,7 @@ scenario "User can see link to bibtex download", {
         driver.get("http://localhost:9001/main");
     }
 
-    when 'always' {
+    when 'always', {
 
     }
  
