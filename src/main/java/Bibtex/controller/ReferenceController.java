@@ -69,6 +69,17 @@ public class ReferenceController {
         return "list";
     }
 
+    @RequestMapping(value = "delete/{id}")
+    public String deleteListener(@PathVariable("id") Long id, Model model) {
+        Reference deleteMe = referenceService.findByID(id);
+        if (deleteMe != null)
+            referenceService.remove(deleteMe);
+        List<Reference> references = referenceService.listAll();
+        
+        model.addAttribute("referencet", references);
+        return "list";
+    }
+    
     @RequestMapping(value = "edit/{id}")
     public String editListener(@PathVariable("id") Long id, Model model) {
         Reference r = referenceService.findByID(id);
