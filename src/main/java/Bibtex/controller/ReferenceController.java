@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +38,7 @@ public class ReferenceController {
     public String mainListener() {
         return "main";
     }
-
+/*
     @RequestMapping(value = "lisaaReference")
     public String referenceListener(
             @RequestParam(value = "type", required = true) final String type,
@@ -63,10 +64,29 @@ public class ReferenceController {
         referenceService.add(r);
         return "redirect:/listaa";
     }
+    */
+    @RequestMapping(value = "lisaaReference")
+    public String referenceListener(@ModelAttribute Reference reference){
+        referenceService.add(reference);
+        return "redirect:/listaa";
+    }
     
     @RequestMapping(value = "list")
     public String listListener(){
         return "list";
+    }
+    
+    @RequestMapping(value = "book")
+    public String bookListener(){
+        return "book";
+    }
+    @RequestMapping(value = "inproceedings")
+    public String inproceedingsListener(){
+        return "inproceedings";
+    }
+    @RequestMapping(value = "article")
+    public String articleListener(){
+        return "article";
     }
 
     @RequestMapping(value = "delete/{id}")
@@ -101,8 +121,7 @@ public class ReferenceController {
 
     @RequestMapping(value = "listaa")
     public String listaaListener(Model model) {
-        List<Reference> references = referenceService.listAll();
-        model.addAttribute("referencet", references);
+        model.addAttribute("referencet", referenceService.listAll());
         return "list";
     }
 

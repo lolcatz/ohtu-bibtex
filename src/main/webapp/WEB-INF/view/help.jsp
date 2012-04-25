@@ -13,13 +13,8 @@
     </head>
     <body>
         <h1>You ass!</h1>
-        Y u no know?? </br>
-        1st u selects wat u want to reference!!</br>
-        2st u selects type!!</br>
-        
-        Den write like dis!!</br>
-        Author = ME,</br>
-        Pages = 100-100,</br>
+        Select which reference you would like to add, 
+        and fill the required fields! You can even leave them empty!
         
         <a href="add">goes try again den!</a></br>
     </body>
