@@ -3,7 +3,7 @@ import ohtu.authentication.*;
 import org.openqa.selenium.*;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
+import org.openqa.selenium.support.ui.Select;
 // By Valtter Taipale
 
 description 'ADD TESTS'
@@ -71,5 +71,48 @@ scenario "Simple Add", {
     then 'the new data is listed correctly.', {
         //driver.get("http://localhost:9001/listaa");
         driver.getPageSource().contains("EvilCorp").shouldBe true
+    }
+}
+
+scenario "Bit more advanced add", {
+    given 'Add page loaded', {
+        driver = new HtmlUnitDriver(true);
+        driver.get("http://localhost:9001/add");
+
+    }
+
+    when 'Example Data Loaded into', {
+        //tää on tärkeätä et otetaan talteen tuo submit, muuten jostain syystä ei löydetä sitä myöhemmin
+        WebElement dropDownListBox = driver.findElement(By.id("menu"));
+        List<WebElement> options = dropDownListBox.findElements(By.tagName("option"));
+        for (WebElement option : options) {
+            if("Article".equals(option.getText()))
+                option.click();
+        }
+        WebElement element2 = driver.findElement(By.cssSelector("input[type=\"submit\"]"));
+        WebElement element = driver.findElement(By.name("key"));
+        element.sendKeys("2");
+        element = driver.findElement(By.name("author"));
+        element.sendKeys("Vesa");
+        element = driver.findElement(By.name("title"));
+        element.sendKeys("MegaTicle");
+        element = driver.findElement(By.name("yearvalue"));
+        element.sendKeys("2");
+        element = driver.findElement(By.name("volume"));
+        element.sendKeys("3");
+        element = driver.findElement(By.name("number"));
+        element.sendKeys("4");
+        element = driver.findElement(By.name("pages"));
+        element.sendKeys("6");
+        element = driver.findElement(By.name("month"));
+        element.sendKeys("January");
+        element = driver.findElement(By.name("note"));
+        element.sendKeys("Test");
+        element2.click();
+    }
+
+    then 'the new data is listed correctly.', {
+        //driver.get("http://localhost:9001/listaa");
+        driver.getPageSource().contains("MegaTicle").shouldBe true
     }
 }
