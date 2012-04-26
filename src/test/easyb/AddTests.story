@@ -90,17 +90,16 @@ scenario "Simple Add + Delete", {
     }
 
     when 'Delete Button is clicked', {
-        driver = new HtmlUnitDriver(true);
         driver.get("http://localhost:9001/listaa");
 
-        WebElement element3 = driver.findElement(ByBy.cssSelector("delete"));
-        element3.click();
+        //WebElement element3 = driver.findElement(By.linkText("[delete]"));
+        //element3.click();
+        driver.findElement(By.linkText("[delete]")).click();
     }
  
-    then 'the new data is listed correctly.', {
-        //driver.get("http://localhost:9001/listaa");
+    then 'the new data is listed correctly (aka doesnt anymore exist).', {
+        driver.get("http://localhost:9001/listaa");
         driver.getPageSource().contains("EvilCorp").shouldBe false
-        driver.getPageSource().contains("pena").shouldBe false
     }
 }
 
