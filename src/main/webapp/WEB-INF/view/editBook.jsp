@@ -28,7 +28,8 @@
                             <span>Month: <input type="text" value="${reference.month}" name="month"><br> 
                             <span>Organization: <input type="text" value="${reference.organization}" name="organization"><br>
                             <span>Publisher: <input type="text" value="${reference.publisher}" name="publisher"><br>
-                            <span>Note: <input type="text" value="${reference.note}" name="note"><br>   
+                            <span>Note: <input type="text" value="${reference.note}" name="note"><br>  
+                            <span>Tag: <input type="text" value="${reference.tag}" name="tag"><br> 
                             <input type="submit"> 
                      </form>
     </body>

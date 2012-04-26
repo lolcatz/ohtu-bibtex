@@ -28,7 +28,7 @@
                 <span>Month: <input type="text" name="month"><br>
                 <span>Organization: <input type="text" name="organization"><br>
                 <span>Publisher: <input type="text" name="publisher"><br>
-                <span>Note: <input type="text" name="note"><br>             
+                <span>Note: <input type="text" name="note"><br>                   
                 <input type="submit">
          </form>
                 

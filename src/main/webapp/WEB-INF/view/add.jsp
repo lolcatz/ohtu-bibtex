@@ -28,6 +28,7 @@
                             <span>Organization: <input type="text" name="organization"><br>\
                             <span>Publisher: <input type="text" name="publisher"><br>\
                             <span>Note: <input type="text" name="note"><br>   \
+                            <span>Tag: <input type="text" name="tag"><br>  \
                             <input type="submit"> \
                      </form> '
             var article = ' \
@@ -43,6 +44,7 @@
                        <span>Pages: <input type="text" name="pages"><br> \
                        <span>Month: <input type="text" name="month"><br> \
                        <span>Note: <input type="text" name="note"><br> \
+                       <span>Tag: <input type="text" name="tag"><br> \
                        <input type="submit"> \
                 </form> '
             var inproceedings = ' \
@@ -60,7 +62,8 @@
                         <span>Address: <input type="text" name="address"><br> \
                         <span>Edition: <input type="text" name="edition"><br> \
                         <span>Month: <input type="text" name="month"><br>     \
-                        <span>Note: <input type="text" name="note"><br>       \
+                        <span>Note: <input type="text" name="note"><br>     \
+                        <span>Tag: <input type="text" name="tag"><br>       \
                         <input type="submit">  \
                  </form> '
             window.onload = function() {

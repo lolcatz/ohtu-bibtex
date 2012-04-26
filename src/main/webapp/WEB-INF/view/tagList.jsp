@@ -1,7 +1,7 @@
 <%-- 
-    Document   : list
-    Created on : 11.4.2012, 17:28:10
-    Author     : noemj
+    Document   : tagList
+    Created on : Apr 26, 2012, 9:11:19 PM
+    Author     : Noemj
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,8 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-
-
         <c:forEach var="reference" items="${referencet}">   
             @${reference.type}{${reference.key},</br>
             <c:if test="${!empty reference.author}">
@@ -69,19 +67,7 @@
         <a href="edit/${reference.id}">[edit]</a></br>
         <a href="delete/${reference.id}">[delete]</a></br>
     </c:forEach>
-
-    </br>
-    </br>
-    </br>
-    Hae Tagilla:</br>
-    <form action="haeTagilla" method="POST">
-        <input type="text" name="tag">
-        <input type="submit">
-    </form>
-
+    
     <a href="<%=request.getContextPath()%>/main">Back to main page</a>
-
-
-
-</body>
+    </body>
 </html>

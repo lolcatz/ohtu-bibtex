@@ -26,7 +26,8 @@
                         <span>Address: <input type="text" value="${reference.address}" name="address"><br> 
                         <span>Edition: <input type="text" value="${reference.edition}" name="edition"><br>
                         <span>Month: <input type="text" value="${reference.month}" name="month"><br>     
-                        <span>Note: <input type="text" value="${reference.note}" name="note"><br>       
+                        <span>Note: <input type="text" value="${reference.note}" name="note"><br> 
+                        <span>Tag: <input type="text" value="${reference.tag}" name="tag"><br> 
                         <input type="submit">  
                  </form>
     </body>

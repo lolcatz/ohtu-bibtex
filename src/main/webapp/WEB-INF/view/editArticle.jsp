@@ -24,6 +24,7 @@
                        <span>Pages: <input type="text" value="${reference.pages}" name="pages"><br> 
                        <span>Month: <input type="text" value="${reference.month}" name="month"><br> 
                        <span>Note: <input type="text" value="${reference.note}" name="note"><br> 
+                       <span>Tag: <input type="text" value="${reference.tag}" name="tag"><br> 
                        <input type="submit"> 
                 </form>
     </body>

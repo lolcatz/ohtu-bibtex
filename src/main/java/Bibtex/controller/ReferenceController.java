@@ -5,6 +5,7 @@
 package Bibtex.controller;
 
 import Bibtex.domain.Reference;
+import Bibtex.repository.ReferenceRepository;
 import Bibtex.service.ReferenceService;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -125,6 +126,12 @@ public class ReferenceController {
     @RequestMapping(value = "/help")
     public String helpListener() {
         return "help";
+    }
+    
+    @RequestMapping(value = "haeTagilla")
+    public String haeTagilla(@RequestParam String tag, Model model){
+        model.addAttribute("referencet", referenceService.findByTag(tag));
+        return "tagList";
     }
 
     @RequestMapping(value = "/bibtex")

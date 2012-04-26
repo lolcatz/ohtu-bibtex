@@ -54,7 +54,16 @@ public class Reference implements Serializable {
     private String series;
     @Column(name = "Publisher")
     private String publisher;
+    @Column(name = "Tag")
+    private String tag;
 
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
     public String getKey() {
         return key;
     }

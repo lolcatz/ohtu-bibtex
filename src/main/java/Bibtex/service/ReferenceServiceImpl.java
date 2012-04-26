@@ -40,4 +40,8 @@ public class ReferenceServiceImpl implements ReferenceService {
         return referenceRepository.findOne(id);
     }
     
+    @Override
+    public List<Reference> findByTag(String tag) {
+        return referenceRepository.findByTag(tag);
+    }
 }

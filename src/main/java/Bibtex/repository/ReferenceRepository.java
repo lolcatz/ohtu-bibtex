@@ -6,10 +6,13 @@ package Bibtex.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import Bibtex.domain.Reference;
+import java.util.List;
 import org.springframework.stereotype.Repository;
 /**
  *
  * @author noemj
  */
 @Repository
-public interface ReferenceRepository extends JpaRepository<Reference, Long> { }
+public interface ReferenceRepository extends JpaRepository<Reference, Long> {
+    List<Reference> findByTag(String tag);
+}
