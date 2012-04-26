@@ -14,7 +14,6 @@ scenario "List page contains working link to main page", {
 
 
     }
-
     when 'Click on the link', {
         WebElement element = driver.findElement(By.linkText("Back to main page"));
         element.click();
