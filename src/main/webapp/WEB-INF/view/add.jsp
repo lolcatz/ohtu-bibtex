@@ -17,7 +17,14 @@
             {
                 var myindex  = dl.selectedIndex
                 var SelValue = dl.options[myindex].value
-                top.location.href = SelValue;
+                <%-- document.write(SelValue) --%>
+                if (SelValue == "book") {
+                    var oldHTML = document.getElementById('para').innerHTML;
+                    var newHTML = '<form action="lisaaReference" method="POST"> <input type="hidden" name="type" value="book"><span>Key: <input type="text" name="key"><br><span>Author: <input type="text" name="author"><br><span>Title: <input type="text" name="title"><br><span>Booktitle: <input type="text" name="booktitle"><br><span>Year: <input type="text" name="year"><br><span>Editor: <input type="text" name="editor"><br><span>Volume: <input type="text" name="volume"><br><span>Number: <input type="text" name="number"><br><span>Series: <input type="text" name="series"><br><span>Pages: <input type="text" name="pages"><br><span>Address: <input type="text" name="address"><br><span>Month: <input type="text" name="month"><br><span>Organization: <input type="text" name="organization"><br><span>Publisher: <input type="text" name="year"><br><span>Note: <input type="text" name="note"><br><input type="submit"></form>';
+                    document.getElementById('para').innerHTML = newHTML;
+                }
+                else {
+                }
             }
         </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -37,6 +44,7 @@
                     top.location.href = dl.droplist.options[dl.droplist.selectedIndex].value;
                 } 
             </script>
+            <p id="para">aaaaaaaaaaaaaaa</p>
         </form>
 
         <a href="<%=request.getContextPath()%>/help">wat do? HLEP!</a></br>
