@@ -12,7 +12,7 @@ scenario "User can see a download link", {
     }
 
     when '?????', {
-
+      any()
     }
  
     then 'bibtex link appears', {

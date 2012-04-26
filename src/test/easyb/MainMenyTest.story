@@ -17,7 +17,7 @@ scenario "User can see link to add new references", {
 
     }
  
-    then 'bibtex link appears', {
+    then 'add link is there', {
         driver.getPageSource().contains("<a href=\"add\">").shouldBe true
     }
 }
@@ -32,7 +32,7 @@ scenario "User can see link to references list", {
 
     }
  
-    then 'bibtex link appears', {
+    then 'reference list link is there', {
         driver.getPageSource().contains("<a href=\"listaa\">").shouldBe true
     }
 }
@@ -46,7 +46,7 @@ scenario "User can see link to bibtex download", {
 
     }
  
-    then 'bibtex link appears', {
+    then 'bibtex link download is there', {
         driver.getPageSource().contains("<a href=\"bibtex\">").shouldBe true
     }
 }
