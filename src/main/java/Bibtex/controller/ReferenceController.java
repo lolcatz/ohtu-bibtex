@@ -173,45 +173,45 @@ public class ReferenceController {
     }
 
     public static void writeBibtexToStream(OutputStream out, List<Reference> references) throws IOException {
-        
+        String output = "";
         for (Reference ref : references) {
-            out.write(("@" + ref.getType()
-                    + "{" + convertToBibtexFormat(ref.getKey()) + ",\n").getBytes());
-            if (!ref.getAddress().isEmpty())
-                out.write(("address = {"+convertToBibtexFormat(ref.getAddress())+"},\n").getBytes());
-            if (!ref.getAuthor().isEmpty())
-                out.write(("author = {"+convertToBibtexFormat(ref.getAuthor())+"},\n").getBytes());
-            if (!ref.getBooktitle().isEmpty())
-                out.write(("booktitle = {"+convertToBibtexFormat(ref.getBooktitle())+"},\n").getBytes());
-            if (!ref.getEdition().isEmpty())
-                out.write(("edition = {"+convertToBibtexFormat(ref.getEdition())+"},\n").getBytes());
-            if (!ref.getEditor().isEmpty())
-                out.write(("editor = {"+convertToBibtexFormat(ref.getEditor())+"},\n").getBytes());
-            if (!ref.getJournal().isEmpty())
-                out.write(("journal = {"+convertToBibtexFormat(ref.getJournal())+"},\n").getBytes());
-            if (!ref.getMonth().isEmpty())
-                out.write(("month = {"+convertToBibtexFormat(ref.getMonth())+"},\n").getBytes());
-            if (!ref.getNote().isEmpty())
-                out.write(("note = {"+convertToBibtexFormat(ref.getNote())+"},\n").getBytes());
-            if (!ref.getNumber().isEmpty())
-                out.write(("number = {"+convertToBibtexFormat(ref.getNumber())+"},\n").getBytes());
-            if (!ref.getOrganization().isEmpty())
-                out.write(("organization = {"+convertToBibtexFormat(ref.getOrganization())+"},\n").getBytes());
-            if (!ref.getPages().isEmpty())
-                out.write(("pages = {"+convertToBibtexFormat(ref.getPages())+"},\n").getBytes());
-            if (!ref.getSeries().isEmpty())
-                out.write(("series = {"+convertToBibtexFormat(ref.getSeries())+"},\n").getBytes());
-            if (!ref.getTitle().isEmpty())
-                out.write(("title = {"+convertToBibtexFormat(ref.getTitle())+"},\n").getBytes());
-            if (!ref.getType().isEmpty())
-                out.write(("type = {"+convertToBibtexFormat(ref.getType())+"},\n").getBytes());
-            if (!ref.getVolume().isEmpty())
-                out.write(("volume = {"+convertToBibtexFormat(ref.getVolume())+"},\n").getBytes());
-            if (!ref.getYear().isEmpty())
-                out.write(("year = {"+convertToBibtexFormat(ref.getYear())+"},\n").getBytes());
-            
-            
-            out.write("}\n".getBytes());
+            output += "@" + ref.getType()
+                    + "{" + convertToBibtexFormat(ref.getKey()) + ",\n";
+            if (ref.getAddress() != null && !ref.getAddress().isEmpty())
+                output += "address = {"+convertToBibtexFormat(ref.getAddress())+"},\n";
+            if (ref.getAuthor() != null && !ref.getAuthor().isEmpty())
+                output += "author = {"+convertToBibtexFormat(ref.getAuthor())+"},\n";
+            if (ref.getBooktitle() != null && !ref.getBooktitle().isEmpty())
+                output += "booktitle = {"+convertToBibtexFormat(ref.getBooktitle())+"},\n";
+            if (ref.getEdition() != null && !ref.getEdition().isEmpty())
+                output += "edition = {"+convertToBibtexFormat(ref.getEdition())+"},\n";
+            if (ref.getEditor() != null && !ref.getEditor().isEmpty())
+                output += "editor = {"+convertToBibtexFormat(ref.getEditor())+"},\n";
+            if (ref.getJournal() != null && !ref.getJournal().isEmpty())
+                output += "journal = {"+convertToBibtexFormat(ref.getJournal())+"},\n";
+            if (ref.getMonth() != null && !ref.getMonth().isEmpty())
+                output += "month = {"+convertToBibtexFormat(ref.getMonth())+"},\n";
+            if (ref.getNote() != null && !ref.getNote().isEmpty())
+                output += "note = {"+convertToBibtexFormat(ref.getNote())+"},\n";
+            if (ref.getNumber() != null && !ref.getNumber().isEmpty())
+                output += "number = {"+convertToBibtexFormat(ref.getNumber())+"},\n";
+            if (ref.getOrganization() != null && !ref.getOrganization().isEmpty())
+                output += "organization = {"+convertToBibtexFormat(ref.getOrganization())+"},\n";
+            if (ref.getPages() != null && !ref.getPages().isEmpty())
+                output += "pages = {"+convertToBibtexFormat(ref.getPages())+"},\n";
+            if (ref.getSeries() != null && !ref.getSeries().isEmpty())
+                output += "series = {"+convertToBibtexFormat(ref.getSeries())+"},\n";
+            if (ref.getTitle() != null && !ref.getTitle().isEmpty())
+                output += "title = {"+convertToBibtexFormat(ref.getTitle())+"},\n";
+            if (ref.getType() != null && !ref.getType().isEmpty())
+                output += "type = {"+convertToBibtexFormat(ref.getType())+"},\n";
+            if (ref.getVolume() != null && !ref.getVolume().isEmpty())
+                output += "volume = {"+convertToBibtexFormat(ref.getVolume())+"},\n";
+            if (ref.getYear() != null && !ref.getYear().isEmpty())
+                output += "year = {"+convertToBibtexFormat(ref.getYear())+"},\n";  
+            output += "}\n";
         }
+        
+        out.write(output.getBytes());
     }
 }

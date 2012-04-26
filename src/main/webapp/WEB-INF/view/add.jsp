@@ -98,9 +98,11 @@
                     top.location.href = dl.droplist.options[dl.droplist.selectedIndex].value;
                 } 
             </script>
-            <p id="input"></p>
+            
         </form>
 
+        <p id="input"></p>
+            
         <a href="<%=request.getContextPath()%>/help">wat do? HLEP!</a></br>
         <a href="<%=request.getContextPath()%>/main">Back to main page</a>
     </body>
