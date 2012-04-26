@@ -133,6 +133,12 @@ public class ReferenceController {
         model.addAttribute("referencet", referenceService.findByTag(tag));
         return "tagList";
     }
+    
+    @RequestMapping(value = "haeTypella")
+    public String haeTypella(@RequestParam String type, Model model){
+        model.addAttribute("referencet", referenceService.findByType(type));
+        return "typeList";
+    }
 
     @RequestMapping(value = "/bibtex")
     public void getFile(HttpServletResponse response) {

@@ -1,7 +1,7 @@
 <%-- 
-    Document   : list
-    Created on : 11.4.2012, 17:28:10
-    Author     : noemj
+    Document   : typeList
+    Created on : Apr 26, 2012, 9:51:40 PM
+    Author     : Noemj
 --%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -9,11 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Searching by type</title>
     </head>
     <body>
-
-
         <c:forEach var="reference" items="${referencet}">   
             @${reference.type}{${reference.key},</br>
             <c:if test="${!empty reference.author}">
@@ -67,24 +65,9 @@
             }</br>
         <li>Tagi: ${reference.tag}</li>
         <a href="edit/${reference.id}">[edit]</a></br>
-        <a href="delete/${reference.id}">[delete]</a></br></br>
+        <a href="delete/${reference.id}">[delete]</a></br>
     </c:forEach>
-    </br></br></br>
-    Hae Tagilla:</br>
-    <form action="haeTagilla" method="POST">
-        <input type="text" name="tag">
-        <input type="submit">
-    </form>
-    </br>
-    Hae Typellä:</br>
-    <form action="haeTypella" method="POST">
-        <input type="text" name="type">
-        <input type="submit">
-    </form>
-    </br></br>
+    
     <a href="<%=request.getContextPath()%>/main">Back to main page</a>
-
-
-
-</body>
+    </body>
 </html>
