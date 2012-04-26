@@ -7,11 +7,28 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 description 'ADD TESTS'
 
+scenario "Really Simple Add", {
+    given 'Add page loaded', {
+        driver = new HtmlUnitDriver();
+        driver.get("http://localhost:9001/add");
+    }
+
+    when 'Example Data Loaded into', {
+        WebElement element = driver.findElement(By.linkText("Submit Query"));
+        element.click();
+    }
+ 
+    then 'the new data is listed correctly.', {
+        driver.get("http://localhost:9001/listaa");
+        driver.getPageSource().contains("@book").shouldBe true
+    }
+}
+
 scenario "Simple Add", {
     given 'Add page loaded', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:9001/main");
-        WebElement element = driver.findElement(By.linkText("add"));
+        WebElement element = driver.findElement(By.linkText("Add new reference "));
         element.click();
 
     }
@@ -57,6 +74,4 @@ scenario "Simple Add", {
         driver.get("http://localhost:9001/listaa");
         driver.getPageSource().contains("EvilCorp").shouldBe true
     }
-}
-
 }
