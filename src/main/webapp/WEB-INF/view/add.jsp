@@ -13,6 +13,12 @@
             function loadPage(list) {
                 location.href=list.options[list.selectedIndex].value
             }
+            function OnChange(dl)
+            {
+                var myindex  = dl.selectedIndex
+                var SelValue = dl.options[myindex].value
+                top.location.href = SelValue;
+            }
         </script>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Lisää viite</title>
@@ -20,14 +26,14 @@
     <body>
 
         <form name="URLlist">
-            <select name="droplist">
+            <select name="droplist" onchange='OnChange(this.form.droplist);'>
                 <option selected="selected" value=" ">Which reference would you like to add?</option>
                 <option value="book">Book</option>
                 <option value="inproceedings">Inproceedings</option>
                 <option value="article">Article</option>
             </select><input type="button" value="Go!" onclick="GotoURL(this.form)">
-            <script language="JavaScript"> 
-                function GotoURL(dl) { 
+            <script language="JavaScript">
+                function GotoURL(dl) {
                     top.location.href = dl.droplist.options[dl.droplist.selectedIndex].value;
                 } 
             </script>
