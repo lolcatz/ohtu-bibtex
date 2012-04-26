@@ -33,3 +33,26 @@ body{
     font-size: X-large;
     font-family: fantasy;
 }
+a {
+    color:black;
+    padding:5px;
+    text-decoration:none;
+    font-family: Arial,Helvetica,sans-serif;
+    font-style: normal;
+    font-variant: small-caps;
+    font-size: 36px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-top-style: solid;
+}
+a:active {
+    color:black;
+    padding:5px;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 36px;
+    border-right-style: solid;
+    border-left-style: solid;
+    border-bottom-style: solid;
+    border-top-style: solid;
+}

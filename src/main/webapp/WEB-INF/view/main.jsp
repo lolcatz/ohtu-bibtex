@@ -18,7 +18,7 @@
             if (e != null)
                 out.println("<FONT COLOR=\"#FF0000\">"+e+"</FONT></br>");
         %>
-        <a href="add">Add new reference</a> </br>
+        <a href="add">Add new reference</a> </br></br>
         <a href="listaa">List all references</a> </br></br>
         <a href="bibtex">Download as bibtex</a> </br></br>
         

@@ -14,11 +14,12 @@ scenario "User can see link to add new references", {
     }
 
     when 'always', {
-
+        WebElement element = driver.findElement(By.linkText("Add new reference"));
+        element.click();
     }
  
     then 'add link is there', {
-        driver.getPageSource().contains("<a href=\"add\">").shouldBe true
+        driver.getPageSource().contains("Lisää viite").shouldBe true
     }
 }
 
@@ -29,11 +30,12 @@ scenario "User can see link to references list", {
     }
 
     when 'always', {
-
+        WebElement element = driver.findElement(By.linkText("List all references"));
+        element.click();
     }
  
     then 'reference list link is there', {
-        driver.getPageSource().contains("<a href=\"listaa\">").shouldBe true
+        driver.getPageSource().contains("JSP Page").shouldBe true
     }
 }
 scenario "User can see link to bibtex download", {

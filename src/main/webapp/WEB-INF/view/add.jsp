@@ -11,26 +11,26 @@
     <head>
         <script language="JavaScript">
             var book = ' \
-                    <form action="lisaaReference" method="POST"> \
-                            <input type="hidden" name="type" value="book"> \
-                            <span>Key: <input type="text" name="key"><br> \
-                            <span>Author: <input type="text" name="author"><br> \
-                            <span>Title: <input type="text" name="title"><br> \
-                            <span>Booktitle: <input type="text" name="booktitle"><br> \
-                            <span>Year: <input type="text" name="yearvalue"><br> \
-                            <span>Editor: <input type="text" name="editor"><br> \
-                            <span>Volume: <input type="text" name="volume"><br> \
-                            <span>Number: <input type="text" name="number"><br> \
-                            <span>Series: <input type="text" name="series"><br> \
-                            <span>Pages: <input type="text" name="pages"><br> \
-                            <span>Address: <input type="text" name="address"><br> \
-                            <span>Month: <input type="text" name="month"><br> \
-                            <span>Organization: <input type="text" name="organization"><br>\
-                            <span>Publisher: <input type="text" name="publisher"><br>\
-                            <span>Note: <input type="text" name="note"><br>   \
-                            <span>Tag: <input type="text" name="tag"><br>  \
-                            <input type="submit"> \
-                     </form> '
+                <form action="lisaaReference" method="POST"> \
+                        <input type="hidden" name="type" value="book"> \
+                        <span>Key: <input type="text" name="key"><br> \
+                        <span>Author: <input type="text" name="author"><br> \
+                        <span>Title: <input type="text" name="title"><br> \
+                        <span>Booktitle: <input type="text" name="booktitle"><br> \
+                        <span>Year: <input type="text" name="yearvalue"><br> \
+                        <span>Editor: <input type="text" name="editor"><br> \
+                        <span>Volume: <input type="text" name="volume"><br> \
+                        <span>Number: <input type="text" name="number"><br> \
+                        <span>Series: <input type="text" name="series"><br> \
+                        <span>Pages: <input type="text" name="pages"><br> \
+                        <span>Address: <input type="text" name="address"><br> \
+                        <span>Month: <input type="text" name="month"><br> \
+                        <span>Organization: <input type="text" name="organization"><br>\
+                        <span>Publisher: <input type="text" name="publisher"><br>\
+                        <span>Note: <input type="text" name="note"><br>   \
+                        <span>Tag: <input type="text" name="tag"><br>  \
+                        <input type="submit"> \
+                </form> '
             var article = ' \
                 <form action="lisaaReference" method="POST"> \
                        <input type="hidden" name="type" value="article"> \
@@ -64,7 +64,7 @@
                         <span>Month: <input type="text" name="month"><br>     \
                         <span>Note: <input type="text" name="note"><br>     \
                         <span>Tag: <input type="text" name="tag"><br>       \
-                        <input type="submit">  \
+                        <input type="submit"> \
                  </form> '
             window.onload = function() {
                 OnChange(document.getElementById('menu'))

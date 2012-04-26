@@ -12,6 +12,7 @@ scenario "List page contains working link to main page", {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:9001/listaa");
 
+
     }
 
     when 'Click on the link', {
