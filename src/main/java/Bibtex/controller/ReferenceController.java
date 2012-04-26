@@ -68,21 +68,6 @@ public class ReferenceController {
         return "list";
     }
 
-    @RequestMapping(value = "book")
-    public String bookListener() {
-        return "book";
-    }
-
-    @RequestMapping(value = "inproceedings")
-    public String inproceedingsListener() {
-        return "inproceedings";
-    }
-
-    @RequestMapping(value = "article")
-    public String articleListener() {
-        return "article";
-    }
-
     @RequestMapping(value = "delete/{id}")
     public String deleteListener(@PathVariable Long id) {
         Reference deleteMe = referenceService.findByID(id);
