@@ -11,6 +11,8 @@ scenario "List page contains link to main page", {
     given 'main page loaded', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:9001/listaa");
+        WebElement element = driver.findElement(By.linkText("main"));
+        element.click();
     }
 
     when 'always', {
@@ -18,6 +20,6 @@ scenario "List page contains link to main page", {
     }
  
     then 'return to main page link appears', {
-        driver.getPageSource().contains("<a href=\"main\">").shouldBe true
+        driver.getPageSource().contains("Lolcatz's Ohtu Bibtex").shouldBe true
     }
 }
