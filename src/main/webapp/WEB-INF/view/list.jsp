@@ -67,18 +67,15 @@
             }</br>
         <li>Tagi: ${reference.tag}</li>
         <a href="edit/${reference.id}">[edit]</a></br>
-        <a href="delete/${reference.id}">[delete]</a></br>
+        <a href="delete/${reference.id}">[delete]</a></br></br>
     </c:forEach>
-
-    </br>
-    </br>
-    </br>
+    </br></br></br>
     Hae Tagilla:</br>
     <form action="haeTagilla" method="POST">
         <input type="text" name="tag">
         <input type="submit">
     </form>
-
+    </br></br>
     <a href="<%=request.getContextPath()%>/main">Back to main page</a>
 
 
