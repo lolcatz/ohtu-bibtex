@@ -44,4 +44,8 @@ public class ReferenceServiceImpl implements ReferenceService {
     public List<Reference> findByTag(String tag) {
         return referenceRepository.findByTag(tag);
     }
+    @Override
+    public List<Reference> findByType(String type) {
+        return referenceRepository.findByType(type);
+    }
 }

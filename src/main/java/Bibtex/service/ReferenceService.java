@@ -18,4 +18,5 @@ public interface ReferenceService {
     public Reference add(Reference reference);
     public Reference findByID(Long id);
     public List<Reference> findByTag(String tag);
+    public List<Reference> findByType(String type);
 }

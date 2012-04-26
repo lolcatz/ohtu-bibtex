@@ -15,4 +15,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReferenceRepository extends JpaRepository<Reference, Long> {
     List<Reference> findByTag(String tag);
+    List<Reference> findByType(String type);
 }
