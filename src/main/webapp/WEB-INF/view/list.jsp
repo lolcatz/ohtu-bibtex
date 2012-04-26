@@ -49,6 +49,9 @@
        <c:if test="${!empty reference.address}">
        Address = {${reference.address}},</br>
        </c:if> 
+       <c:if test="${!empty reference.publisher}">
+       Publisher = {${reference.publisher}},</br>
+       </c:if>   
        <c:if test="${!empty reference.edition}">
        Edition = {${reference.edition}},</br>
        </c:if> 

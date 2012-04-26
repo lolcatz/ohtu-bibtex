@@ -18,7 +18,6 @@ scenario "List page contains link to main page", {
     when 'always', {
 
     }
- 
     then 'return to main page link appears', {
         driver.getPageSource().contains("Lolcatz's Ohtu Bibtex").shouldBe true
     }
