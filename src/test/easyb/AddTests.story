@@ -1,7 +1,8 @@
-import ohtu.*
-import ohtu.authentication.*
-import org.openqa.selenium.*
+import ohtu.*;
+import ohtu.authentication.*;
+import org.openqa.selenium.*;
 import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 // By Valtter Taipale
 
@@ -9,12 +10,12 @@ description 'ADD TESTS'
 
 scenario "Really Simple Add", {
     given 'Add page loaded', {
-        driver = new HtmlUnitDriver();
+        driver = new HtmlUnitDriver(true);
         driver.get("http://localhost:9001/add");
     }
 
     when 'Example Data Loaded into', {
-        WebElement element = driver.findElement(By.linkText("Submit Query"));
+        WebElement element = driver.findElement(By.cssSelector("input[type=\"submit\"]"));
         element.click();
     }
  
@@ -26,16 +27,15 @@ scenario "Really Simple Add", {
 
 scenario "Simple Add", {
     given 'Add page loaded', {
-        driver = new HtmlUnitDriver();
-        driver.get("http://localhost:9001/main");
-        WebElement element = driver.findElement(By.linkText("Add new reference "));
-        element.click();
+        driver = new HtmlUnitDriver(true);
+        driver.get("http://localhost:9001/add");
 
     }
 
     when 'Example Data Loaded into', {
-
-        element = driver.findElement(By.name("key"));
+        //tää on tärkeätä et otetaan talteen tuo submit, muuten jostain syystä ei löydetä sitä myöhemmin
+        WebElement element2 = driver.findElement(By.cssSelector("input[type=\"submit\"]"));
+        WebElement element = driver.findElement(By.name("key"));
         element.sendKeys("1");
         element = driver.findElement(By.name("author"));
         element.sendKeys("pena");
@@ -65,13 +65,11 @@ scenario "Simple Add", {
         element.sendKeys("GoodInc");
         element = driver.findElement(By.name("note"));
         element.sendKeys("Test");
-
-        element.findElement(By.Text("submit"));
-        element.click();
+        element2.click();
     }
  
     then 'the new data is listed correctly.', {
-        driver.get("http://localhost:9001/listaa");
+        //driver.get("http://localhost:9001/listaa");
         driver.getPageSource().contains("EvilCorp").shouldBe true
     }
 }
