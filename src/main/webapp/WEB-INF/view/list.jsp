@@ -25,8 +25,8 @@
        <c:if test="${!empty reference.journal}">
        Journal = {${reference.journal}},</br>
        </c:if> 
-       <c:if test="${!empty reference.year}">
-       Year = {${reference.year}},</br>
+       <c:if test="${!empty reference.yearvalue}">
+       Year = {${reference.yearvalue}},</br>
        </c:if> 
        <c:if test="${!empty reference.volume}">
        Volume = {${reference.volume}},</br>

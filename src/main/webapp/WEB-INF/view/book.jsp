@@ -18,7 +18,7 @@
                 <span>Author: <input type="text" name="author"><br>
                 <span>Title: <input type="text" name="title"><br>
                 <span>Booktitle: <input type="text" name="booktitle"><br>
-                <span>Year: <input type="text" name="year"><br>
+                <span>Year: <input type="text" name="yearvalue"><br>
                 <span>Editor: <input type="text" name="editor"><br>               
                 <span>Volume: <input type="text" name="volume"><br>
                 <span>Number: <input type="text" name="number"><br>
@@ -27,7 +27,7 @@
                 <span>Address: <input type="text" name="address"><br>
                 <span>Month: <input type="text" name="month"><br>
                 <span>Organization: <input type="text" name="organization"><br>
-                <span>Publisher: <input type="text" name="year"><br>
+                <span>Publisher: <input type="text" name="publisher"><br>
                 <span>Note: <input type="text" name="note"><br>             
                 <input type="submit">
          </form>

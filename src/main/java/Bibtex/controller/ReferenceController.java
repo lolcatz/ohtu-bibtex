@@ -207,8 +207,8 @@ public class ReferenceController {
                 output += "type = {"+convertToBibtexFormat(ref.getType())+"},\n";
             if (ref.getVolume() != null && !ref.getVolume().isEmpty())
                 output += "volume = {"+convertToBibtexFormat(ref.getVolume())+"},\n";
-            if (ref.getYear() != null && !ref.getYear().isEmpty())
-                output += "year = {"+convertToBibtexFormat(ref.getYear())+"},\n";  
+            if (ref.getYearvalue() != null && !ref.getYearvalue().isEmpty())
+                output += "year = {"+convertToBibtexFormat(ref.getYearvalue())+"},\n";  
             output += "}\n";
         }
         

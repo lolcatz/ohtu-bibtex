@@ -18,8 +18,8 @@
                 <span>Author: <input type="text" name="author"><br>
                 <span>Editor: <input type="text" name="editor"><br>
                 <span>Title: <input type="text" name="title"><br>
-                <span>Publisher: <input type="text" name="year"><br>
-                <span>Year: <input type="text" name="year"><br>
+                <span>Publisher: <input type="text" name="publisher"><br>
+                <span>Year: <input type="text" name="yearvalue"><br>
                 <span>Volume: <input type="text" name="volume"><br>
                 <span>Number: <input type="text" name="number"><br>
                 <span>Series: <input type="text" name="series"><br>

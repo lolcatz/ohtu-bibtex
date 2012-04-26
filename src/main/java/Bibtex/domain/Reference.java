@@ -29,7 +29,7 @@ public class Reference implements Serializable {
     @Column(name = "Journal")
     private String journal;
     @Column(name = "Year")
-    private String year;
+    private String yearvalue;
     @Column(name = "Volume")
     private String volume;
     @Column(name = "Number")
@@ -52,6 +52,8 @@ public class Reference implements Serializable {
     private String organization;
     @Column(name = "Series")
     private String series;
+    @Column(name = "Publisher")
+    private String publisher;
 
     public String getKey() {
         return key;
@@ -79,10 +81,18 @@ public class Reference implements Serializable {
 
     public String getAddress() {
         return address;
-    }
+    }  
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getPublisher() {
+        return publisher;
+    }
+
+    public void setPublisher(String publisher) {
+        this.publisher = publisher;
     }
 
     public String getAuthor() {
@@ -189,12 +199,12 @@ public class Reference implements Serializable {
         this.volume = volume;
     }
 
-    public String getYear() {
-        return year;
+    public String getYearvalue() {
+        return yearvalue;
     }
 
-    public void setYear(String year) {
-        this.year = year;
+    public void setYearvalue(String yearvalue) {
+        this.yearvalue = yearvalue;
     }
     
     

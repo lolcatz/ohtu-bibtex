@@ -18,7 +18,7 @@
                 <span>Author: <input type="text" name="author"><br>
                 <span>Title: <input type="text" name="title"><br>
                 <span>Journal: <input type="text" name="journal"><br>
-                <span>Year: <input type="text" name="year"><br>
+                <span>Year: <input type="text" name="yearvalue"><br>
                 <span>Volume: <input type="text" name="volume"><br>             
                 <span>Number: <input type="text" name="number"><br>
                 <span>Pages: <input type="text" name="pages"><br>
