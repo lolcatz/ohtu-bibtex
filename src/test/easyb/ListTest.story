@@ -7,18 +7,34 @@ import org.openqa.selenium.htmlunit.HtmlUnitDriver;
 
 description 'List page Tests'
 
-scenario "List page contains link to main page", {
-    given 'main page loaded', {
+scenario "List page contains working link to main page", {
+    given 'list page loaded', {
         driver = new HtmlUnitDriver();
         driver.get("http://localhost:9001/listaa");
-        WebElement element = driver.findElement(By.linkText("main"));
+
+    }
+
+    when 'Click on the link', {
+        WebElement element = driver.findElement(By.linkText("Back to main page"));
         element.click();
     }
+    then 'we are at the main page', {
+        driver.getPageSource().contains("Lolcatz's Ohtu Bibtex").shouldBe true
+    }
+}
 
-    when 'always', {
+scenario "List page contains Tag AND Type Searches", {
+    given 'list page loaded', {
+        driver = new HtmlUnitDriver();
+        driver.get("http://localhost:9001/listaa");
 
     }
-    then 'return to main page link appears', {
-        driver.getPageSource().contains("Lolcatz's Ohtu Bibtex").shouldBe true
+
+    when 'Always.', {
+
+    }
+    then 'The two methods are there', {
+        driver.getPageSource().contains("haeTagilla").shouldBe true
+        driver.getPageSource().contains("haeTypella").shouldBe true
     }
 }
