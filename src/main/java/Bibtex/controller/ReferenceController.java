@@ -205,7 +205,7 @@ public class ReferenceController {
             if (ref.getTitle() != null && !ref.getTitle().isEmpty()) {
                 output += "title = {" + convertToBibtexFormat(ref.getTitle()) + "},\n";
             }
-            if (ref.getTitle() != null && !ref.getPublisher().isEmpty()) {
+            if (ref.getPublisher() != null && !ref.getPublisher().isEmpty()) {
                 output += "publisher = {" + convertToBibtexFormat(ref.getPublisher()) + "},\n";
             }
             if (ref.getType() != null && !ref.getType().isEmpty()) {

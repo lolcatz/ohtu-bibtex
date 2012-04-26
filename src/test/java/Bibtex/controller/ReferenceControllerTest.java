@@ -105,20 +105,19 @@ public class ReferenceControllerTest {
             add(new Reference() {{
                 setKey("ar1");
                 setType("article");
-                setTitle("b\\aa\\aab");
+                setTitle("b{\\aa}{\\aa}b");
                 setAuthor("{\\AE}");
             }});
             add(new Reference() {{
                 setKey("ip1");
                 setType("inproceedings");
-                setTitle("\\\"aaa\\\"a\\aa");
+                setTitle("\\\"aaa\\\"a{\\aa}");
                 setAuthor("{\\v z}\\\"O\\\"A{\\o}{\\ae}");
             }});
         }};
         OutputStream os = new ByteArrayOutputStream();
         ReferenceController.writeBibtexToStream(os, references);
         String output = os.toString();
-
         for (Reference ref : check) {
             assertTrue(output.contains("@"+ref.getType()+"{"+ref.getKey()+",\n"));
             assertTrue(output.contains("author = {"+ref.getAuthor()+"}"));
