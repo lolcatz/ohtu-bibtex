@@ -63,6 +63,10 @@
                         <span>Note: <input type="text" name="note"><br>       \
                         <input type="submit">  \
                  </form> '
+            window.onload = function() {
+                OnChange(document.getElementById('menu'))
+            }
+
             function loadPage(list) {
                 location.href=list.options[list.selectedIndex].value
             }
@@ -87,7 +91,7 @@
     <body>
 
         <form name="URLlist">
-            <select name="droplist" onchange='OnChange(this.form.droplist);'>
+            <select id="menu" name="droplist" onchange='OnChange(this.form.droplist);'>
                 <option value="book">Book</option>
                 <option value="inproceedings">Inproceedings</option>
                 <option value="article">Article</option>
