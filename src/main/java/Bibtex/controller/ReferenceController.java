@@ -100,24 +100,24 @@ public class ReferenceController {
         return "list";
     }
     
-    @RequestMapping(value = "edit/{id}")
-    public String editListener(@PathVariable("id") Long id, Model model) {
-        Reference r = referenceService.findByID(id);
-
-        String fields = "";
-        for (String field : r.getFields().keySet()) {
-            fields += field + " = " + r.getFields().get(field) + "\n";
-        }
-
-        model.addAttribute("type_", r.getType());
-        model.addAttribute("key_", r.getKey());
-        model.addAttribute("fields_", fields);
-        model.addAttribute("error", "Editing, reference will disappear if not resubmitted");
-        model.addAttribute("types", Reference.fieldsForTypes.keySet());
-        referenceService.remove(r);
-
-        return "add";
-    }
+//    @RequestMapping(value = "edit/{id}")
+//    public String editListener(@PathVariable("id") Long id, Model model) {
+//        Reference r = referenceService.findByID(id);
+//
+//        String fields = "";
+//        for (String field : r.getFields().keySet()) {
+//            fields += field + " = " + r.getFields().get(field) + "\n";
+//        }
+//
+//        model.addAttribute("type_", r.getType());
+//        model.addAttribute("key_", r.getKey());
+//        model.addAttribute("fields_", fields);
+//        model.addAttribute("error", "Editing, reference will disappear if not resubmitted");
+//        model.addAttribute("types", Reference.implementedTypes);
+//        referenceService.remove(r);
+//
+//        return "add";
+//    }
 
     @RequestMapping(value = "listaa")
     public String listaaListener(Model model) {
@@ -127,7 +127,7 @@ public class ReferenceController {
 
     @RequestMapping(value = "/add")
     public String addListener(Model model) {
-        model.addAttribute("types", Reference.fieldsForTypes.keySet());
+        model.addAttribute("types", Reference.implementedTypes);
         return "add";
     }
 
@@ -138,14 +138,15 @@ public class ReferenceController {
 
     @RequestMapping(value = "/bibtex")
     public void getFile(HttpServletResponse response) {
-        response.setContentType("application/octet-stream");
-        response.setHeader("Content-Disposition", "attachment;filename=references.bib");
+        response.setContentType("text/plain");
+        //response.setHeader("Content-Disposition", "attachment;filename=references.bib");
         try {
             ServletOutputStream out = response.getOutputStream();
             writeBibtexToStream(out, referenceService.listAll());
             out.flush();
             out.close();
         } catch (Throwable t) {
+            System.err.println(t.getMessage());
         }
     }
 
@@ -176,10 +177,40 @@ public class ReferenceController {
         for (Reference ref : references) {
             out.write(("@" + ref.getType()
                     + "{" + convertToBibtexFormat(ref.getKey()) + ",\n").getBytes());
-            for (String k : ref.getFields().keySet()) {
-                out.write((k + " = {" 
-                        + convertToBibtexFormat(ref.getFields().get(k)) + "},\n").getBytes());
-            }
+            if (!ref.getAddress().isEmpty())
+                out.write(("address = {"+convertToBibtexFormat(ref.getAddress())+"},\n").getBytes());
+            if (!ref.getAuthor().isEmpty())
+                out.write(("author = {"+convertToBibtexFormat(ref.getAuthor())+"},\n").getBytes());
+            if (!ref.getBooktitle().isEmpty())
+                out.write(("booktitle = {"+convertToBibtexFormat(ref.getBooktitle())+"},\n").getBytes());
+            if (!ref.getEdition().isEmpty())
+                out.write(("edition = {"+convertToBibtexFormat(ref.getEdition())+"},\n").getBytes());
+            if (!ref.getEditor().isEmpty())
+                out.write(("editor = {"+convertToBibtexFormat(ref.getEditor())+"},\n").getBytes());
+            if (!ref.getJournal().isEmpty())
+                out.write(("journal = {"+convertToBibtexFormat(ref.getJournal())+"},\n").getBytes());
+            if (!ref.getMonth().isEmpty())
+                out.write(("month = {"+convertToBibtexFormat(ref.getMonth())+"},\n").getBytes());
+            if (!ref.getNote().isEmpty())
+                out.write(("note = {"+convertToBibtexFormat(ref.getNote())+"},\n").getBytes());
+            if (!ref.getNumber().isEmpty())
+                out.write(("number = {"+convertToBibtexFormat(ref.getNumber())+"},\n").getBytes());
+            if (!ref.getOrganization().isEmpty())
+                out.write(("organization = {"+convertToBibtexFormat(ref.getOrganization())+"},\n").getBytes());
+            if (!ref.getPages().isEmpty())
+                out.write(("pages = {"+convertToBibtexFormat(ref.getPages())+"},\n").getBytes());
+            if (!ref.getSeries().isEmpty())
+                out.write(("series = {"+convertToBibtexFormat(ref.getSeries())+"},\n").getBytes());
+            if (!ref.getTitle().isEmpty())
+                out.write(("title = {"+convertToBibtexFormat(ref.getTitle())+"},\n").getBytes());
+            if (!ref.getType().isEmpty())
+                out.write(("type = {"+convertToBibtexFormat(ref.getType())+"},\n").getBytes());
+            if (!ref.getVolume().isEmpty())
+                out.write(("volume = {"+convertToBibtexFormat(ref.getVolume())+"},\n").getBytes());
+            if (!ref.getYear().isEmpty())
+                out.write(("year = {"+convertToBibtexFormat(ref.getYear())+"},\n").getBytes());
+            
+            
             out.write("}\n".getBytes());
         }
     }
