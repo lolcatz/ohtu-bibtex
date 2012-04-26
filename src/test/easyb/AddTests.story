@@ -6,7 +6,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 // By Valtter Taipale
 
-description 'ADD TESTS'
+description 'ADD PAGE TESTS'
 
 scenario "Really Simple Add", {
     given 'Add page loaded', {
@@ -71,5 +71,34 @@ scenario "Simple Add", {
     then 'the new data is listed correctly.', {
         //driver.get("http://localhost:9001/listaa");
         driver.getPageSource().contains("EvilCorp").shouldBe true
+    }
+}
+scenario "Simple Add + Delete", {
+    given 'Sample Data Inserted', {
+        driver = new HtmlUnitDriver(true);
+        driver.get("http://localhost:9001/add");
+    //tää on tärkeätä et otetaan talteen tuo submit, muuten jostain syystä ei löydetä sitä myöhemmin
+        WebElement element2 = driver.findElement(By.cssSelector("input[type=\"submit\"]"));
+        WebElement element = driver.findElement(By.name("key"));
+        element.sendKeys("1");
+        element = driver.findElement(By.name("author"));
+        element.sendKeys("pena");
+        element = driver.findElement(By.name("organization"));
+        element.sendKeys("EvilCorp");
+        element2.click();
+    }
+
+    when 'Delete Button is clicked', {
+        driver = new HtmlUnitDriver(true);
+        driver.get("http://localhost:9001/listaa");
+
+        WebElement element3 = driver.findElement(ByBy.cssSelector("delete"));
+        element3.click();
+    }
+ 
+    then 'the new data is listed correctly.', {
+        //driver.get("http://localhost:9001/listaa");
+        driver.getPageSource().contains("EvilCorp").shouldBe false
+        driver.getPageSource().contains("pena").shouldBe false
     }
 }
