@@ -36,75 +36,48 @@ scenario "Simple Add", {
         //tää on tärkeätä et otetaan talteen tuo submit, muuten jostain syystä ei löydetä sitä myöhemmin
         WebElement element2 = driver.findElement(By.cssSelector("input[type=\"submit\"]"));
         WebElement element = driver.findElement(By.name("key"));
-        element.sendKeys("1");
+        element.sendKeys("a1");
         element = driver.findElement(By.name("author"));
-        element.sendKeys("pena");
+        element.sendKeys("a2");
         element = driver.findElement(By.name("title"));
-        element.sendKeys("Trollium");
+        element.sendKeys("a3");
         element = driver.findElement(By.name("booktitle"));
-        element.sendKeys("Trullor");
+        element.sendKeys("a4");
         element = driver.findElement(By.name("yearvalue"));
-        element.sendKeys("2");
+        element.sendKeys("a5");
         element = driver.findElement(By.name("editor"));
-        element.sendKeys("minä");
+        element.sendKeys("a6");
         element = driver.findElement(By.name("volume"));
-        element.sendKeys("3");
+        element.sendKeys("a7");
         element = driver.findElement(By.name("number"));
-        element.sendKeys("4");
+        element.sendKeys("a8");
         element = driver.findElement(By.name("series"));
-        element.sendKeys("5");
+        element.sendKeys("a9");
         element = driver.findElement(By.name("pages"));
-        element.sendKeys("6");
+        element.sendKeys("a10");
         element = driver.findElement(By.name("address"));
-        element.sendKeys("7");
+        element.sendKeys("a11");
         element = driver.findElement(By.name("month"));
-        element.sendKeys("January");
+        element.sendKeys("a12");
         element = driver.findElement(By.name("organization"));
-        element.sendKeys("EvilCorp");
+        element.sendKeys("a13");
         element = driver.findElement(By.name("publisher"));
-        element.sendKeys("GoodInc");
+        element.sendKeys("a14");
         element = driver.findElement(By.name("note"));
-        element.sendKeys("Test");
+        element.sendKeys("a15");
         element2.click();
     }
  
     then 'the new data is listed correctly.', {
         //driver.get("http://localhost:9001/listaa");
-        driver.getPageSource().contains("EvilCorp").shouldBe true
-    }
-}
-
-scenario "Simple Add + Delete", {
-    given 'Sample Data Inserted', {
-        driver = new HtmlUnitDriver(true);
-        driver.get("http://localhost:9001/add");
-    //tää on tärkeätä et otetaan talteen tuo submit, muuten jostain syystä ei löydetä sitä myöhemmin
-        WebElement element2 = driver.findElement(By.cssSelector("input[type=\"submit\"]"));
-        WebElement element = driver.findElement(By.name("key"));
-        element.sendKeys("1");
-        element = driver.findElement(By.name("author"));
-        element.sendKeys("pena");
-        element = driver.findElement(By.name("organization"));
-        element.sendKeys("EvilCorp");
-        element2.click();
-    }
-
-    when 'Delete Button is clicked', {
-        driver.get("http://localhost:9001/listaa");
-
-        //WebElement element3 = driver.findElement(By.linkText("[delete]"));
-        //element3.click();
-        driver.findElement(By.linkText("[delete]")).click();
-    }
- 
-    then 'the new data is listed correctly (aka doesnt anymore exist).', {
-        driver.get("http://localhost:9001/listaa");
-        driver.getPageSource().contains("EvilCorp").shouldBe false
+        driver.getPageSource().contains("@book").shouldBe true
+        for (int i=1;i<16;i++)
+            driver.getPageSource().contains("a"+i).shouldBe true
     }
 }
 
 
-scenario "Bit more advanced add", {
+scenario "Testing type article", {
     given 'Add page loaded', {
         driver = new HtmlUnitDriver(true);
         driver.get("http://localhost:9001/add");
@@ -113,37 +86,113 @@ scenario "Bit more advanced add", {
 
     when 'Example Data Loaded into', {
         //tää on tärkeätä et otetaan talteen tuo submit, muuten jostain syystä ei löydetä sitä myöhemmin
-        WebElement dropDownListBox = driver.findElement(By.id("menu"));
-        List<WebElement> options = dropDownListBox.findElements(By.tagName("option"));
-        for (WebElement option : options) {
-            if("Article".equals(option.getText()))
+        new Select(driver.findElement(By.id("menu"))).selectByVisibleText("Article");
+        //System.out.println(driver.getPageSource())
+        List<WebElement> element2 = driver.findElementsByCssSelector("input[type=\"submit\"]");
+        int i = 0
+        for (WebElement option : element2) {
+            if (i-1 == element2.size())
                 option.click();
+            i++
         }
-        WebElement element2 = driver.findElement(By.cssSelector("input[type=\"submit\"]"));
-        WebElement element = driver.findElement(By.name("key"));
-        element.sendKeys("2");
-        element = driver.findElement(By.name("author"));
-        element.sendKeys("Vesa");
-        element = driver.findElement(By.name("title"));
-        element.sendKeys("MegaTicle");
-        element = driver.findElement(By.name("yearvalue"));
-        element.sendKeys("2");
-        element = driver.findElement(By.name("volume"));
-        element.sendKeys("3");
-        element = driver.findElement(By.name("number"));
-        element.sendKeys("4");
-        element = driver.findElement(By.name("pages"));
-        element.sendKeys("6");
-        element = driver.findElement(By.name("month"));
-        element.sendKeys("January");
-        element = driver.findElement(By.name("note"));
-        element.sendKeys("Test");
-        element2.click();
+        WebElement element = driver.findElement(By.xpath("(//input[@name='key'])[2]"));
+        element.sendKeys("g1");
+        element = driver.findElement(By.xpath("(//input[@name='author'])[2]"));
+        element.sendKeys("g2");
+        element = driver.findElement(By.xpath("(//input[@name='title'])[2]"));
+        element.sendKeys("g3");
+        element = driver.findElement(By.xpath("(//input[@name='yearvalue'])[2]"));
+        element.sendKeys("g4");
+        element = driver.findElement(By.xpath("(//input[@name='volume'])[2]"));
+        element.sendKeys("g5");
+        element = driver.findElement(By.xpath("(//input[@name='number'])[2]"));
+        element.sendKeys("g6");
+        element = driver.findElement(By.xpath("(//input[@name='pages'])[2]"));
+        element.sendKeys("g7");
+        element = driver.findElement(By.xpath("(//input[@name='month'])[2]"));
+        element.sendKeys("g8");
+        element = driver.findElement(By.xpath("(//input[@name='note'])[2]"));
+        element.sendKeys("g9");
+        for (WebElement option : element2) {
+            if (i-1 == element2.size()) {
+                option.click();
+                break;
+            }
+            i++
+        }
     }
 
     then 'the new data is listed correctly.', {
+        //System.out.println(driver.getPageSource())
         //driver.get("http://localhost:9001/listaa");
-        driver.getPageSource().contains("MegaTicle").shouldBe true
+        driver.getPageSource().contains("@article").shouldBe true
+        for (int i=1;i<10;i++)
+            driver.getPageSource().contains("g"+i).shouldBe true
     }
 }
 
+
+scenario "Testing type inproceedings", {
+    given 'Add page loaded', {
+        driver = new HtmlUnitDriver(true);
+        driver.get("http://localhost:9001/add");
+
+    }
+
+    when 'Example Data Loaded into', {
+        //tää on tärkeätä et otetaan talteen tuo submit, muuten jostain syystä ei löydetä sitä myöhemmin
+        new Select(driver.findElement(By.id("menu"))).selectByVisibleText("Inproceedings");
+        //driver.executeScript("test();");
+
+        //System.out.println(driver.getPageSource())
+        List<WebElement> element2 = driver.findElementsByCssSelector("input[type=\"submit\"]");
+        int i = 0
+        for (WebElement option : element2) {
+            if (i-1 == element2.size())
+                option.click();
+            i++
+        }
+        WebElement element = driver.findElement(By.xpath("(//input[@name='key'])[2]"));
+        element.sendKeys("u1");
+        element = driver.findElement(By.xpath("(//input[@name='author'])[2]"));
+        element.sendKeys("u2");
+        element = driver.findElement(By.xpath("(//input[@name='editor'])[2]"));
+        element.sendKeys("u3");
+        element = driver.findElement(By.xpath("(//input[@name='title'])[2]"));
+        element.sendKeys("u4");
+        element = driver.findElement(By.xpath("(//input[@name='publisher'])[2]"));
+        element.sendKeys("u5");
+        element = driver.findElement(By.xpath("(//input[@name='yearvalue'])[2]"));
+        element.sendKeys("u6");
+        element = driver.findElement(By.xpath("(//input[@name='volume'])[2]"));
+        element.sendKeys("u7");
+        element = driver.findElement(By.xpath("(//input[@name='number'])[2]"));
+        element.sendKeys("u8");
+        element = driver.findElement(By.xpath("(//input[@name='series'])[2]"));
+        element.sendKeys("u9");
+        element = driver.findElement(By.xpath("(//input[@name='address'])[2]"));
+        element.sendKeys("u10");
+        element = driver.findElement(By.xpath("(//input[@name='edition'])"));
+        element.sendKeys("u11");
+        element = driver.findElement(By.xpath("(//input[@name='month'])[2]"));
+        element.sendKeys("u12");
+        element = driver.findElement(By.xpath("(//input[@name='note'])[2]"));
+        element.sendKeys("u13");
+        //System.out.println(driver.getPageSource())
+        for (WebElement option : element2) {
+            if (i-1 == element2.size()) {
+                option.click();
+                break;
+            }
+            i++
+        }
+    }
+
+    then 'the new data is listed correctly.', {
+        //System.out.println(driver.getPageSource())
+        //driver.get("http://localhost:9001/listaa");
+        driver.getPageSource().contains("@inproceedings").shouldBe true
+        for (int i=1;i<14;i++)
+            driver.getPageSource().contains("u"+i).shouldBe true
+    }
+}

@@ -63,7 +63,7 @@
                 Series = {${reference.series}},</br>
             </c:if>     
             }</br>
-        <li>Tagi: ${reference.tag}</li>
+        Tagi: ${reference.tag}
         <a href="edit/${reference.id}">[edit]</a></br>
         <a href="delete/${reference.id}">[delete]</a></br>
     </c:forEach>

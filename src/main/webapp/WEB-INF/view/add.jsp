@@ -70,6 +70,10 @@
                 OnChange(document.getElementById('menu'))
             }
 
+            function test() {
+                OnChange(document.getElementById('menu'))
+            }
+
             function loadPage(list) {
                 location.href=list.options[list.selectedIndex].value
             }
