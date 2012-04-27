@@ -4,10 +4,7 @@
  */
 package Bibtex.domain;
 
-import java.util.HashMap;
-
 import org.junit.*;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -34,11 +31,11 @@ public class ReferenceTest {
     public void tearDown() {
     }
 
-//    /**
-//     * Test of getType method, of class Reference.
-//     */
-//    @Test
-//    public void testGetsAndSets() {
+    /**
+     * Test of getType method, of class Reference.
+     */
+    @Test
+    public void testGetsAndSets() {
 //        Reference r = new Reference();
 //        HashMap<String,String> hm = new HashMap<String,String>();
 //        try {
@@ -51,31 +48,31 @@ public class ReferenceTest {
 //        assertEquals(r.getKey(), "asdf1");
 //        assertEquals(r.getType(), "book");
 //        assertEquals(r.getFields(), hm);
-//    }
-//
-//    /**
-//     * Test of isValidType method, of class Reference.
-//     */
-//    @Test
-//    public void testIsValidType() {
+    }
+
+    /**
+     * Test of isValidType method, of class Reference.
+     */
+    @Test
+    public void testIsValidType() {
 //        for (String s : Reference.validTypes)
 //            assertTrue(Reference.isValidType(s));
-//    }
-//
-//    /**
-//     * Test of isValidField method, of class Reference.
-//     */
-//    @Test
-//    public void testIsValidField() {
+    }
+
+    /**
+    * Test of isValidField method, of class Reference.
+     */
+    @Test
+    public void testIsValidField() {
 //        for (String s : Reference.validFields)
 //            assertTrue(Reference.isValidField(s));
-//    }
-//
-//    /**
-//     * Test of extractFields method, of class Reference.
-//     */
-//    @Test
-//    public void testExtractFields() throws Exception {
+    }
+
+    /**
+     * Test of extractFields method, of class Reference.
+     */
+    @Test
+    public void testExtractFields() throws Exception {
 //        String input = "title = a\nauthor = b\npublisher = c";
 //        HashMap<String,String> inputs = new HashMap<String,String>();
 //        try {
@@ -85,5 +82,5 @@ public class ReferenceTest {
 //        assertEquals(inputs.get("title"), "a");
 //        assertEquals(inputs.get("author"), "b");
 //        assertEquals(inputs.get("publisher"), "c");
-//    }
+    }
 }
